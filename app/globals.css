@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,10 +19,30 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+    
 }
+
+ .message {
+   cursor: pointer;
+   font: 15px Helvetica, Arial, sans-serif;
+   background: #eee;
+   padding: 20px;
+   text-align: center;
+   transition: 100ms ease-in background;
+   margin: 10px;
+ }
+
+ .message:hover {
+   background: #ccc;
+ }
+
+ .image{
+  width: auto;
+  height: auto;
+ }

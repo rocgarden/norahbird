@@ -1,0 +1,7 @@
+.title {
+    font-family: 'Architects Daughter', cursive;
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    margin-top:30px;
+}

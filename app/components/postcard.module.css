@@ -1,0 +1,26 @@
+
+.category  {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: red;
+    font-family: 'Architects Daughter', cursive;
+}
+
+.image {
+    width: auto;
+    height: auto;
+    margin-left: 15px;
+}
+
+.imageImport {
+    width: 40%;
+    height: auto;
+}
+
+.contentHeading{
+    margin-bottom: 5px;
+    font-size: 25px;
+    color: #60a5fa;
+    font-family: 'Architects Daughter', cursive;
+  
+}

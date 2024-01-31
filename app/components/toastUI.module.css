@@ -1,0 +1,14 @@
+ .displayDiv{
+    display: flex;
+ }
+
+ .messageDiv{
+  flex-grow: 1;
+  font-size: 15px;
+  padding: 8px 12px;
+}
+
+
+ 
+ 
+
