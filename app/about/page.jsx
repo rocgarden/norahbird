@@ -16,17 +16,17 @@ const about = () => {
               >
                   <div className="lg:flex hidden items-center space-x-6 lg:space-x-8">
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
-                          alt=""
+                        <div className="h-64 w-44 overflow-hidden rounded-lg">
+                          <img
+                            src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710185768/next/bday_vyoo89.jpg"}
+                          alt="bday"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                          alt=""
+                      <div className="h-45 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
+                        <img 
+                            src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710714711/apple-touch-icon_nsqu9s.png"}
+                          alt="logo"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -34,22 +34,22 @@ const about = () => {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                          alt=""
+                          src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1691982080/samples/food/dessert.jpg"}
+                          alt="pie"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                          alt=""
+                          src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710714362/hiking_uv3pmf.jpg"}
+                          alt="hike"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
-                          alt=""
+                          src={process.env.NEXT_PUBLIC_CLOUDINARY_URL +"/v1710715969/mudrun_ivdoyb.jpg"}
+                          alt="run"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -82,19 +82,25 @@ const about = () => {
               <div
                 aria-hidden="true"
               >
+            <article className="flex max-w-xl flex-col items-start m-3">
+             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">About Me</h1>
+              <p class="text-base text-gray-900">I have lived in Santa Monica for over 20 years. Love to eat out. Enjoy traveling. Write about things around Santa Monica.
+              &quot;Love&quot; to share ideas and tips.</p>
+
+            </article>
                 {/* <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8"> */}
-                  <div className="flex items-center space-x-6 lg:space-x-8">
+                  {/* <div className="flex items-center space-x-6 lg:space-x-8">
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
+                          src=""
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
+                          src=""
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
@@ -103,21 +109,21 @@ const about = () => {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
+                          src=""
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
+                          src=""
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
+                          src=""
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
@@ -126,31 +132,27 @@ const about = () => {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
+                          src=""
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
+                          src=""
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               {/* </div> */}
             </div>
           </div>
     </div>
  </div>
-  <article className="flex max-w-xl flex-col items-start m-3">
-          <h1 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">About Me</h1>
-          <p class="text-base text-gray-900">The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: &quot;Black&quot;. Need to add an extra pop of color to your outfit? Our white tee has you covered.</p>
 
-     </article>
 </div>
       
   )

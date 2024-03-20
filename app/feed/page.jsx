@@ -3,7 +3,7 @@ import { getPosts } from "@/_actions";
 import { deleteById } from "@/_actions";
 import { architects_daughter } from "@/styles/fonts";
 import classes from './feed.module.css';
-
+import Notification from "../components/notification";
 // async function getPosts() {
 //     try {
 //         const res = await fetch("http://localhost:3000/api/post",
@@ -92,7 +92,8 @@ const allPosts = await getPosts();
           postsArr.push(postObj);
       }
   } catch (error) {
-        console.log("posts error:: ",error);
+    console.log("posts error:: ", error);
+    
   }
   
   return (

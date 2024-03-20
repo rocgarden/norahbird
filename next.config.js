@@ -6,8 +6,6 @@ const nextConfig = {
       "github.com",
       "lh3.googleusercontent.com",
       "res.cloudinary.com",
-      "api.unsplash.com",
-      "source.unsplash.com",
     ],
   },
   async headers() {

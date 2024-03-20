@@ -39,7 +39,7 @@ export const authOptions = {
     },
     async signIn({ user, account }) {
       if (account.provider === "google") {
-        const { name, email } = user;
+        const { email } = user;
         try {
           await connectDB();
 

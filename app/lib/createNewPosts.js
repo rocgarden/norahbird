@@ -46,7 +46,6 @@ export const createNewPost = async ({
     image,
     cloudinary_id,
   });
-  console.log("category::: ",category)
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
@@ -99,9 +98,17 @@ export const deletePostById = async (postId) => {
 };
 
 export const getAllPosts = async () => {
-   const posts = await Post.find();
   //  console.log("All Posts connnected: ", posts);
-   return NextResponse.json(posts);
+  let posts;
+  try {
+     posts = await Post.find();
+  } catch (error) {
+    return NextResponse.json({ msg: ["Unable to find posts."] }, {status: 500});
+  }
+    if (!posts || posts.length === 0) {
+      return NextResponse.json({ msg: ["Unable to find posts."] },{status: 500});
+    }
+   return NextResponse.json(posts, {status: 200});
 };
 
 export const getPostsById = async ({ creator }) => {

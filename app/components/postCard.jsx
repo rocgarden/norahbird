@@ -42,7 +42,7 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
   
  const { data: session } = useSession();
     return ( 
-  <div className="flex mt-3">
+  <div className="grid grid-cols-2 mt-3">
      {
       confirmed ? 
             <div><h2>{errorMessage}</h2></div>
@@ -111,16 +111,17 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
         }
        </div>
     ): null
-}
+    }
+
 </article>
-   <div className="relative ml-8 items-center hidden md:block">
+   <div className="relative ml-8 items-center align hidden md:block">
     {
         image ? ( 
         <Image src={image} 
         alt={title} 
         width="0"
         height="0"
-        sizes="100vw"
+        sizes="30vw , 100vh"
         className={classes.imageImport}
         // style={{ width: '40%', height: 'auto' }}
         priority

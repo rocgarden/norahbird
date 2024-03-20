@@ -7,6 +7,8 @@ const people = [
   { id: 2, name: 'For Lunch' },
   { id: 3, name: 'For Dinner ' },
   { id: 4, name: 'Snack' },
+  { id: 5, name: 'Fun' },
+
 ]
 
 export default function IconDropDown({selected,setSelected}) {

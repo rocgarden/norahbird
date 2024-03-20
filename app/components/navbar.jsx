@@ -3,21 +3,28 @@ import Link from 'next/link'
 import SignInButton from './signInButton';
 import { useSession } from 'next-auth/react';
 import classes from './navbar.module.css';
+import Image from "next/image";
 
 const navbar = () => {
     const { status, data: session } = useSession();
 
   return (          
 <nav className=" shadow-sm border-gray-200 dark:text-slate-900">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-     <Link href="/" className="flex items-center md:text-5xl sm:3xl">
+  <div className=" flex flex-wrap items-center justify-between mx-auto p-2">
+     <Link href="/" className="flex items-center md:text-3xl sm:5xl">
       {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" /> */}
-      <span className={classes.navbar} >Norah <span className='text-blue-400' >Bird</span></span>
-
+       <img
+            className="mx-auto h-12 mr-3 w-auto"
+            src="/birdLogo.png"
+            alt="Norah Bird"
+            height='auto'
+            width='auto'
+          />
+      <div className='hidden w-full md:flex md:w-auto md:order-1'>
+       <span className={classes.navbar} >Norah <span className='text-blue-400' >Bird</span></span>
+      </div>
       </Link>
- 
- 
-    <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
+      <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
       {/* <div class="relative mt-3 md:hidden">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -40,7 +47,6 @@ const navbar = () => {
         </>
         <li>
           <Link href='/'>Home</Link>
-          {/* <a href="/" className="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent md:text-slate-900 md:p-0 md:dark:text-slate-900" aria-current="page">Home</a> */}
         </li>       
         <li>
         <SignInButton />
@@ -57,11 +63,6 @@ const navbar = () => {
             protected page. You are logged in as:  {' '}
             <span className='text-center dark:text-blue-400 text-2xl font-bold'>{session?.user?.name}</span>
             </p>
-        {/* <h1 className='text-center dark:text-slate-900 text-2xl font-bold'>
-          This is a <span className='text-blue-400'>client-side</span>{' '}
-          protected page
-        </h1> */}
-       
       </div> 
     ): null
   }

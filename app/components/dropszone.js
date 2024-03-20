@@ -73,8 +73,7 @@ const Dropzone = ({ className }) => {
       method: "POST",
       body: formData,
     }).then((res) => res.json());
-    console.log(data);
-    // write to database using server actions--- this will save the cloudinary link to mongoDB
+    // write to database using server actions--- this will save the cloudinary link to db
     await saveToDatabase({
       version: data?.version,
       signature: data?.signature,

@@ -47,7 +47,7 @@ const newItem = (props) => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
-      'image/*': []
+      'image/*': ['.jpeg', '.png']
     },
     maxSize: 1024 * 1000,
     maxFiles: 1,
@@ -64,11 +64,10 @@ const newItem = (props) => {
 
     const file = files[0];
     // if (!file) return;
-
         // get a signature using server action
     const { timestamp, signature } = await getSignature();
 
-        // upload to cloudinary using the signature
+        // upload using the signature
     const formData = new FormData();
     let postData;
     if (file) {
@@ -84,22 +83,14 @@ const newItem = (props) => {
         }).then(res => res.json())
         console.log(postData);
     }
-    
-   
-
-    //upload post item to mongoDB
-    // const result = await addEntry(data, creator);
+    //upload post item to db
     const result = await addEntry(data, category,  creator,{
       version: postData?.version,
       signature: postData?.signature,
       public_id: postData?.public_id,
       secure_url: postData?.secure_url
     });
-
-    console.log("action data:: ", data, category);
-    console.log("user session:: ", session.user.email);
     if (result?.error) {
-      console.log(result?.error)
       setErrorStatus(result.error);
     } else {
       formRef.current.reset()
@@ -116,18 +107,10 @@ const newItem = (props) => {
           Create a New Post
         </h1>
       </div>
-      {/* <div className='container'>
-        <h1 className='text-gray-900 text-2xl font-bold'>
-          This is a <span className='text-emerald-500'>client-side</span>{' '}
-          protected page
-        </h1>
-        <h2 className='text-gray-900 font-bold mt-4 font-medium'>You are logged in as:</h2>
-        <p className='text-gray-900 text-2xl font-bold mt-4'>{session?.user?.name}</p>
-      </div> */}
       <IconDropDown setSelected={setSelected} />
       {
         selected && 
-        <div><p className='text-gray-900'>Selection: {category}</p></div>
+        <div className='m-5' ><p className='text-gray-900'>Category Selection: {category}</p></div>
       }
 
       <form ref={formRef} action={action}>
@@ -158,6 +141,7 @@ const newItem = (props) => {
         </div>
         <div>
             <h2 className='text-gray-900 font-bold mt-8 font-medium'>Add an image: </h2>
+           <em>(Only *.jpeg and *.png images will be accepted)</em>
         </div>
    <div>
     <div
