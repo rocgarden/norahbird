@@ -13,8 +13,8 @@ export async function POST(req, res) {
     console.log("req:: ",email);
 
     await sendgrid.send({
-      to: "rgarcia646g@gmail.com", // Your email where you'll receive emails
-      from: "rgarcia646@gmail.com", // your website email address here
+      to: `${process.env.SENDGRID_EMAIL}`, // Your email where you'll receive emails
+      from: `${process.env.SENDGRID_EMAIL}`, // your website email address here
       subject: `[Customer Lead from website:NoraBird Events] : ${email}`,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html lang="en">
