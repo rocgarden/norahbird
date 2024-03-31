@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Switch } from '@headlessui/react'
 import {  useRef } from 'react';
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -49,9 +50,10 @@ export default function Contact() {
         body: JSON.stringify(
         formValues
       )
-      }).then(res => 
-         console.log(res, 'sent')
-      )
+      })
+      //   .then(res => 
+      //    console.log(res, 'sent')
+      // )
       // if (res.ok) {
       // } else {
       //   console.log(res)

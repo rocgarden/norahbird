@@ -6,7 +6,6 @@ import User from "@/app/models/userSchema";
 async function init() {
   try {
     await connectDB();
-    console.log("db hit")
   } catch (error) {
     throw new Error("failed to connect DB");
   }
@@ -34,7 +33,6 @@ export const createNewPost = async ({
     console.log(error);
     return NextResponse.json({ msg: ["Unable to create post."] });
   }
-  // console.log("user data :: ", user);
   const createNewPost = await Post.create({
     title,
     content,
