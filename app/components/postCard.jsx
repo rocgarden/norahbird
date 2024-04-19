@@ -121,7 +121,7 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
         alt={title} 
         width="0"
         height="0"
-        sizes="30vw , 100vh"
+        sizes="100vw , 100vh"
         className={classes.imageImport}
         // style={{ width: '40%', height: 'auto' }}
         priority

@@ -2,8 +2,6 @@ import classes from './hero.module.css';
 import Image from "next/image";
 
 const hero = () => {
-      // let urlImg = `https://source.unsplash.com/random`;
-
   return (
           // <div className="grid content-center place-items-center mx-auto lg:mx-0 bg-auto bg-center">
             <div className={classes.div}>

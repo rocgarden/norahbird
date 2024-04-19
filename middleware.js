@@ -19,7 +19,7 @@ export default withAuth(
       },
     },
   },
-  console.log("withAuth middleware:: ")
+  console.log("withAuth middleware::nonce ")
 );
 
 export const config = {
@@ -66,8 +66,6 @@ export function middleware(request) {
     "Content-Security-Policy",
     contentSecurityPolicyHeaderValue
   );
-  console.log("nonce:: ", nonce);
-  console.log("csp HEADER:: ",cspHeader)
   return response;
 }
 

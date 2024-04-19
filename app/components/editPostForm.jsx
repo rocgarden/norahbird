@@ -16,6 +16,7 @@ export default  function EditPost({id, title, address, phoneNumber, content, ima
     const [newPhoneNumber, setNewPhoneNumber] = useState(phoneNumber);
     const [newAddress, setNewAddress] = useState(address);
     const [files, setFiles] = useState([])
+    const [rejected, setRejected] = useState([])
 
     const router = useRouter();
     const { data: session } = useSession({
@@ -43,7 +44,11 @@ export default  function EditPost({id, title, address, phoneNumber, content, ima
       setRejected(previousFiles => [...previousFiles, ...rejectedFiles])
     }
   }, []);
-
+ 
+  const removeRejected = name => {
+      setRejected(files => files.filter(({ file }) => file.name !== name))
+  }
+  
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       'image/*': []
@@ -160,7 +165,7 @@ export default  function EditPost({id, title, address, phoneNumber, content, ima
         </div>
       </div>
       <h3 className='title mt-10 border-b pb-3 text-lg font-semibold text-stone-600'>
-          New Image File
+          New Image File to Upload
         </h3>
         <ul className='mt-6 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {files.map(file => (
@@ -187,8 +192,41 @@ export default  function EditPost({id, title, address, phoneNumber, content, ima
                   Update post
               </button>
         </form> 
+        {
+          rejected ? 
+            (
+        <>
+        <h3 className='title text-lg font-semibold text-neutral-600 mt-24 border-b pb-3'>
+          Rejected Files
+        </h3>
+        <ul className='mt-6 flex flex-col'>
+          {rejected.map(({ file, errors }) => (
+            <li key={file.name} className='flex items-start justify-between'>
+              <div>
+                <p className='mt-2 text-neutral-500 text-sm font-medium'>
+                  {file.name}
+                </p>
+                <ul className='text-[12px] text-red-400'>
+                  {errors.map(error => (
+                    <li key={error.code}>File must be below 1mb.</li>
+                  ))}
+                </ul>
+              </div>
+              <button
+                type='button'
+                className='mt-1 py-1 text-[12px] uppercase tracking-wider font-bold text-neutral-500 border border-secondary-400 rounded-md px-3 hover:bg-secondary-400 hover:text-white transition-colors'
+                onClick={() => removeRejected(file.name)}
+              >
+                Remove Selected File
+              </button>
+            </li>
+          ))}
+        </ul>
+        </>
+        ): null
+        }
             <div className="border-gray-900/10 pt-12 pb-8">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">Current Image</h2>
+              <h2 className="text-base font-semibold leading-7 text-gray-900">Current Image in Post</h2>
             </div>
           <div className="mx-auto max-w-2xl lg:mx-0">
                 <Image
@@ -202,7 +240,7 @@ export default  function EditPost({id, title, address, phoneNumber, content, ima
                 priority
                 // className='h-full w-full rounded-md object-contain'
               />
-            </div>
+        </div>
         </div>
     )
 }

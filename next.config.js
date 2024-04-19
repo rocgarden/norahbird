@@ -2,10 +2,26 @@
 const nextConfig = {
   experimental: { serverActions: true },
   images: {
-    domains: [
-      "github.com",
-      "lh3.googleusercontent.com",
-      "res.cloudinary.com",
+    remotePatterns: [
+      // {
+      //   protocol: "https",
+      //   hostname: "github.com",
+      //   port: "",
+      //   pathname: "",
+      //   //   "github.com",
+      //   // "lh3.googleusercontent.com",
+      //   //   "res.cloudinary.com",
+      // },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+      },
     ],
   },
   async headers() {

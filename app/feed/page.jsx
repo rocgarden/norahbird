@@ -119,7 +119,7 @@ const allPosts = await getPosts();
               <div className="mx-auto max-w-7xl px-6 lg:px-8"> */}
          <div className="flex flex-col justify-between mx-auto mt-10 max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {/* <article className="flex max-w-xl flex-col items-start justify-between"> */}
-            {postsArr.map((post) => {
+            {postsArr?.map((post) => {
                 return (
                 <>
                  {/* <div key={id}> */}
@@ -144,7 +144,7 @@ const allPosts = await getPosts();
                   />
                 </div>
                 </>
-              );
+              )
             })}
           {/* </article> */}
           {/* </div> */}

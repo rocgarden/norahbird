@@ -90,7 +90,7 @@ const about = () => {
               >
             <article className="flex max-w-xl flex-col items-start m-3">
              <h1 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">About Me</h1>
-              <p class="text-base text-gray-900">I have lived in Santa Monica for over 20 years. Love to eat out. Enjoy traveling. Write about things around Santa Monica.
+              <p className="text-base text-gray-900">I have lived in Santa Monica for over 20 years. Love to eat out. Enjoy traveling.
               &quot;Love&quot; to share ideas and tips.</p>
 
             </article>
