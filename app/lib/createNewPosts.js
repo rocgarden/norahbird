@@ -64,7 +64,7 @@ export const deletePostById = async (postId) => {
   let post;
   try {
     post = await Post.findById(id).populate("creator");
-    console.log("post:: ", post)
+    console.log("post:: ", post);
   } catch (err) {
     console.log("post:", err);
      return NextResponse.json({ msg: ["Unable to find post by id."] });

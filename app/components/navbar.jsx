@@ -59,9 +59,9 @@ const navbar = () => {
       
         <div className='pl-5 items-center justify-between bg-indigo-600'>
           <p className="flex h-10 items-center justify-center  px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-              This is a <span className='text-blue-400 text-2xl font-bold'> client-side</span>{' '}
+              This is a <strong className="font-semibold dark:text-blue-400">client-side</strong>
             protected page. You are logged in as:  {' '}
-            <span className='text-center dark:text-blue-400 text-2xl font-bold'>{session?.user?.name}</span>
+            <strong className='text-center dark:text-blue-400 font-bold'>{session?.user?.name}</strong>
             </p>
       </div> 
     ): null
