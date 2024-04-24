@@ -6,7 +6,6 @@ import Post from "@/app/models/PostSchema";
 export const dynamic = "force-dynamic";
 
 export async function POST(req) {
-  console.log("post req:: ", req);
     const { title, content, creator } = await req.json();
  
     try {
@@ -63,7 +62,6 @@ export async function DELETE(request) {
     await sess.commitTransaction();
     return NextResponse.json({ message: "Post deleted!", success: true})
   } catch (err) {
-    // const error = new Error("Could not delete right now.");
     return NextResponse.json({ msg: ["Unable to delete post."] });
   }
 };

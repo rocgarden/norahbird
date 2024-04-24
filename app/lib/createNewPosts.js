@@ -69,15 +69,12 @@ export const deletePostById = async (postId) => {
     console.log("post:", err);
      return NextResponse.json({ msg: ["Unable to find post by id."] });
   }
-  //  console.log("postId:: ", post);
 
   //check if post exists
   if (!post) {
-    //const error = new Error("Post not found");
      return NextResponse.json({ error: "Post not found", msg: ["Unable to find post."], status: 401 });
   }
    if (!post.creator) {
-     //const error = new Error("Author not found");
      return NextResponse.json({ error: "Author not found.", msg: ["Unable to find author."], status: 400 });
    }
   try {
@@ -90,13 +87,11 @@ export const deletePostById = async (postId) => {
     return NextResponse.json({message:"Success:: ", status:200});
 
   } catch (err) {
-   // const error = new Error("Could not delete right now.");
      return NextResponse.json({error:"Could not delete post right now. Try again later." , msg: ["Unable to delete post."], status: 500 });
   }
 };
 
 export const getAllPosts = async () => {
-  //  console.log("All Posts connnected: ", posts);
   let posts;
   try {
      posts = await Post.find();
@@ -128,7 +123,6 @@ export const getPostsById = async ({ creator }) => {
   if (!posts) {
     return NextResponse.json({ msg: ["Unable to find posts."] });
   }
-  //console.log("all posts:: ", posts);
   return posts;
 
 }

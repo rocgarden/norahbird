@@ -65,14 +65,12 @@ export async function addEntry(
         phoneNumber,
         address,
         addressLink,
-        // image: public_id,
-        // cloudinary_id: secure_url,
       });
     }
   } catch (error) {
     return NextResponse.json({message: "Unable to create new post." }, { status: 400 }, {error: error});
   }
-  redirect(`/`); // Navigate to new route
+  redirect(`/`);
 }
    
 // export async function getPosts(){
@@ -112,11 +110,6 @@ export async function deleteById(postId) {
   } catch (error) {
     return error;
   }
-
-
-  // revalidateTag("posts"); // Update cached posts
-  //redirect(`/`); // Navigate to new route
-  // return data.status;
 }
 
 export async function getByUserId(creator){
@@ -134,4 +127,3 @@ export async function getSignature() {
   return { timestamp, signature };
 }
 
-//65440f75cd8eabacb8f63fcf

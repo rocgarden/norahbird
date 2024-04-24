@@ -196,7 +196,6 @@ const newItem = (props) => {
        Publish post
    </button>
       </form>
-      {/* <Dropzone className="mt-10 border border-neutral-200 p-16" /> */}
    </section>
         ): 
           redirect('/signin')

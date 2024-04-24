@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 const sendgrid = require("@sendgrid/mail");
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-//const router = express.Router();
 
 export async function POST(req, res) {
   // const { firstName,lastName, email, phoneNumber,company, message } = await req.json();

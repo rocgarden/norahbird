@@ -66,7 +66,6 @@ const formattedDate = (postDate) => {
 }
 var postsArr = [];
 const allPosts = await getPosts();
-// console.log("allPosts:: ",allPosts)
   try {
       for (var i = 0; i < 10; i++){
           var title = capitalize(allPosts[i].title.toString());
