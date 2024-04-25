@@ -104,7 +104,7 @@ const newItem = (props) => {
    <div>
       {
         session ? (
-    <section className='container mx-auto px-24 py-24'>
+    <section className='container mx-auto sm:px-4 py-24'>
       <div className='container my-8'>
          <h1 className='text-gray-900 text-2xl font-bold text-center'>
           Create a New Post

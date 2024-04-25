@@ -1,32 +1,6 @@
 import PostCard from "../components/postCard";
 import { getPosts } from "@/_actions";
-import { deleteById } from "@/_actions";
-import { architects_daughter } from "@/styles/fonts";
 import classes from './feed.module.css';
-import Notification from "../components/notification";
-// async function getPosts() {
-//     try {
-//         const res = await fetch("http://localhost:3000/api/post",
-//         {
-//             cache: 'no-store'
-//         }
-//         );
-//         if (!res.ok) {
-//             throw new Error("Error. No posts found.");
-//         }
-//         const postRes = res.json();
-//         // console.log(postRes)
-//         return postRes;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-// const architects_daughter = Architects_Daughter({
-//   subsets: ["latin"],
-//   display: "swap",
-//   weight: "400",
-//   // variable: "--font-architects-daughter",
-// });
 
 async function Feed() {  
    const currentDate = new Date().toLocaleDateString("en-us", {
@@ -96,35 +70,16 @@ const allPosts = await getPosts();
   }
   
   return (
-    <section className='container mx-auto px-24'>
+    <section className='container mx-auto px-14'>
       <div>
         <p className={classes.date}   >{ currentDate}</p>
       </div>
       <div className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          {/* {" "}
-        <div key={id}>
-          {" "}
-          <PostCard
-            title={post.title}
-            content={post.content}
-            postId={post.postId}
-          />
-          {" "}
-        </div> */}
-          {/* <div className="mx-auto max-w-2xl lg:mx-0">
-          <div className="bg-white py-24 sm:py-32">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-              <div className="mx-auto max-w-7xl px-6 lg:px-8"> */}
+        <div className="max-w-5xl px-6 lg:px-8">
          <div className="flex flex-col justify-between mx-auto mt-10 max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {/* <article className="flex max-w-xl flex-col items-start justify-between"> */}
             {postsArr?.map((post) => {
                 return (
                 <>
-                 {/* <div key={id}> */}
-                 {/* <div className="flex items-center gap-x-4 text-xs">
-                  
-                 </div> */}
                  <div key={post.id} className="items-center my-5 group relative">  
                  <div className="border-b-2">
                   <time dateTime="2020-03-16" className="text-gray-500">
@@ -145,15 +100,10 @@ const allPosts = await getPosts();
                 </>
               )
             })}
-          {/* </article> */}
-          {/* </div> */}
         </div>
       </div>
       </div>
       </section>
-      // </div>
-      //   </div>
-        
     );
 
 

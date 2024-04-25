@@ -7,7 +7,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { deleteById } from "@/_actions";
 import { toast } from "react-toastify";
-import { dancing_script } from "@/styles/fonts";
 import classes from './postcard.module.css';
 
 const postCard = ({ title, content, phoneNumber, address, addressLink, postId, image, category }) => {

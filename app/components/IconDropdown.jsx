@@ -15,11 +15,7 @@ export default function IconDropDown({selected,setSelected}) {
   // const [selected, setSelected] = useState(people[0])
   const [query, setQuery] = useState('')
 
-  function handleOptions (event) {
-    console.log(selected);
-    setSelected(selected.name);
-    return props.selected
-  }
+
   const filteredPeople =
     query === ''
       ? people

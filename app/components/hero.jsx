@@ -1,11 +1,10 @@
 import classes from './hero.module.css';
-import Image from "next/image";
 
 const hero = () => {
   return (
           // <div className="grid content-center place-items-center mx-auto lg:mx-0 bg-auto bg-center">
-            <div className={classes.div}>
-            <h2 className="text-3xl  tracking-tight text-white md:text-6xl text-center" >
+            <div className={classes.hero} fetchPriority="high" rel='preload'>
+            <h2 className="text-3xl tracking-tight text-white md:text-6xl text-center" >
               From the blog
             </h2>
          
@@ -17,12 +16,3 @@ const hero = () => {
 }
 
 export default hero;
-
-{/* <Image src={urlImg} 
-              alt="Random Image" 
-              width="0"
-              height="0"
-              sizes="100vw"
-              className={classes.image}
-              priority      
-              />    */}
