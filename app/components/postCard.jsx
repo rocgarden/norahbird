@@ -41,7 +41,7 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
   
  const { data: session } = useSession();
     return ( 
-  <div className="grid grid-cols-2 mt-3">
+  <div className="grid lg:grid-cols-2 sm:grid-cols-3 mt-3">
      {
       confirmed ? 
             <div><h2>{errorMessage}</h2></div>
