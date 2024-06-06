@@ -43,7 +43,7 @@ export default function Contact() {
       formData.append('country', formValues.country);
        setFormValues(formData);
       console.log("form values:: ",formValues )
-      await fetch(process.env.CONTACT_EMAIL, {
+      await fetch('/api/email', {
       method: 'POST',
         body: JSON.stringify(
         formValues
