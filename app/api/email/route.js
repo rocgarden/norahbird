@@ -13,7 +13,7 @@ export async function POST(req, res) {
 
     await sendgrid.send({
       to: `${process.env.SENDGRID_EMAIL}`, // Your email where you'll receive emails
-      from: `${process.env.NEXTAUTH_URL}`, // your website email address here
+      from: `${process.env.SENDGRID_EMAIL}`, // your website email address here
       subject: `[Customer Lead from website:NoraBird Events] : ${email}`,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html lang="en">
@@ -33,7 +33,7 @@ export async function POST(req, res) {
         <div class="img-container" style="display: flex;justify-content: center;align-items: center;border-radius: 5px;overflow: hidden; font-family: 'helvetica', 'ui-sans';">              
               </div>
               <div class="container" style="margin-left: 20px;margin-right: 20px;">
-              <h2>You've got a new mail from: <h4> ${firstName}${lastName}</h4>Their email is:<br> ✉️${req.body.email} </h2>
+              <h2>You've got a new mail from: <h4> ${firstName}${lastName}</h4>Their email is:<br> ✉️${email} </h2>
               <div style="font-size: 16px;">
               <p><h4>Phone Number:</h4>${phoneNumber}</p>
                <p><h4>Company:</h4></p>
