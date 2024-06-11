@@ -50,7 +50,7 @@ export async function POST(req, res) {
     });
   } catch (error) {
     console.log("err from server", error);
-    return NextResponse.json({ msg: ["Unable to create email."] });
+    return NextResponse.json({ msg: ["Unable to create email."] , error: error.message});
     //return res.status(error.statusCode || 500).json({ error: error.message });
   }
 
