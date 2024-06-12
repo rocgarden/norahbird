@@ -41,6 +41,9 @@ export default function Contact() {
       formData.append('phoneNumber',formValues.phoneNumber);
       formData.append('message',formValues.message);
       formData.append('country', formValues.country);
+    if (!formData) {
+        throw new Error("All fields must be filled")
+      }
        setFormValues(formData);
       console.log("form values:: ",formValues )
       await fetch('/api/email', {

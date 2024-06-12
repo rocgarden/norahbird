@@ -39,8 +39,8 @@ const formattedDate = (postDate) => {
   return date;
 }
 var postsArr = [];
-const allPosts = await getPosts();
   try {
+      const allPosts = await getPosts();
       for (var i = 0; i < 10; i++){
           var title = capitalize(allPosts[i].title.toString());
           var content = allPosts[i].content;
@@ -62,11 +62,14 @@ const allPosts = await getPosts();
               addressLink: addresLink,
               category:category
           }
-          postsArr.push(postObj);
+        postsArr.push(postObj);
+        if (!postsArr) {
+         throw new Error("No posts found")
+        }
       }
   } catch (error) {
     console.log("posts error:: ", error);
-    
+
   }
   
   return (
