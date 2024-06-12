@@ -95,6 +95,7 @@ const newItem = (props) => {
     });
     if (result?.error) {
       setErrorStatus(result.error);
+      throw new Error();
     } else {
       formRef.current.reset()
     }
