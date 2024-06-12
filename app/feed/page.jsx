@@ -38,9 +38,9 @@ const formattedDate = (postDate) => {
   );
   return date;
 }
-var postsArr = [];
+  var postsArr = [];
+  const allPosts = await getPosts();
   try {
-      const allPosts = await getPosts();
       for (var i = 0; i < 10; i++){
           var title = capitalize(allPosts[i].title.toString());
           var content = allPosts[i].content;
@@ -63,13 +63,12 @@ var postsArr = [];
               category:category
           }
         postsArr.push(postObj);
-        if (!postsArr) {
-         throw new Error("No posts found")
-        }
       }
   } catch (error) {
     console.log("posts error:: ", error);
-
+   if (!postsArr || postsArr.length === 0) {
+     throw new Error("No posts found")
+    }
   }
   
   return (
