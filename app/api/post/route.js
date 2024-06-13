@@ -34,7 +34,11 @@ export async function POST(req) {
 export async function GET() {
   await connectDB();
   const posts = await Post.find();
-  console.log("Posts connnected: ")
+  console.log("Posts connnected: ");
+  if (!posts || posts.length === 0) {
+    const error = new Error("Posts not found");
+    return NextResponse.json({ error, msg: ["Unable to find posts."] });
+  }
   return NextResponse.json( posts)
 
 }

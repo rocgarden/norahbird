@@ -88,11 +88,11 @@ export async function getPosts() {
   const sortPostItems = allPosts.slice().sort((postA, postB) =>
     postA._id > postB._id ? -1 : 1
   );
+  
   return sortPostItems;
   } catch (error) {
-    throw new Error("No posts fetched");
     //return error;
-    //return NextResponse.json({message: "No items found"})
+    return NextResponse.json({message: "No items found", error: error.message})
   }
 
 }

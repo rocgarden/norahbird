@@ -97,14 +97,19 @@ export const deletePostById = async (postId) => {
 export const getAllPosts = async () => {
   let posts;
   try {
-     posts = await Post.find();
+    posts = await Post.find();
+    if (!posts || posts.length === 0) {
+    const error = new Error("Posts not found");
+    return NextResponse.json(
+      { msg: ["Unable to find posts."] },
+      { status: 500 }
+    );
+  }
   } catch (error) {
     return NextResponse.json({ msg: ["Unable to find posts."] }, {status: 500});
   }
-    if (!posts || posts.length === 0) {
-      return NextResponse.json({ msg: ["Unable to find posts."] },{status: 500});
-    }
-   return NextResponse.json(posts, {status: 200});
+   
+ return NextResponse.json(posts, {status: 200});
 };
 
 export const getPostsById = async ({ creator }) => {

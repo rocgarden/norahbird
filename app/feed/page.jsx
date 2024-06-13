@@ -3,13 +3,12 @@ import { getPosts } from "@/_actions";
 import classes from './feed.module.css';
 import { Suspense } from "react";
 
-async function Feed() {  
-   const currentDate = new Date().toLocaleDateString("en-us", {
+const currentDate = new Date().toLocaleDateString("en-us", {
     weekday: "long",
     year: "numeric",
     month: "short",
     day: "numeric",
-  });
+});
   const capitalize = (word) => {
   return word[0].toUpperCase() + word.substring(1).toLowerCase();
   };
@@ -39,45 +38,50 @@ const formattedDate = (postDate) => {
   );
   return date;
 }
+async function fetchPosts() {
   const allPosts = await getPosts();
+    console.log("allposts body:: ", allPosts)
 
-  useEffect(() => {
-    allPosts
-  }, []);
+    if (!allPosts || allPosts.length === 0) {
+    throw new Error("Posts not found");
+  }
+  return allPosts;
 
-  var postsArr = [];
-  
+}
 
+async function Feed() {   
   try {
-      for (var i = 0; i < 10; i++){
-          var title = capitalize(allPosts[i].title.toString());
-          var content = allPosts[i].content;
-          var id = allPosts[i]._id;
-          var postDate = formattedDate(id);
-          var img = allPosts[i].cloudinary_id;
-          var phone = phoneFormat(allPosts[i].phoneNumber);
-          var address = allPosts[i].address;
-          var addresLink = allPosts[i].addressLink;
-          var category = allPosts[i].category;
-          var postObj = {
-              title : title,
-              content: content,
-              postId : id,
-              date: postDate,
-              image: img,
-              phoneNumber: phone,
-              address : address,
-              addressLink: addresLink,
-              category:category
-          }
+   const data = await fetchPosts([]);
+   console.log("data:: ",data)
+    var postsArr = [];
+      for (var i = 0; i < 10; i++) {
+        var title = capitalize(data[i].title.toString());
+        var content = data[i].content;
+        var id = data[i]._id;
+        var postDate = formattedDate(id); 
+        var img = data[i].cloudinary_id;
+        var phone = phoneFormat(data[i].phoneNumber);
+        var address = data[i].address;
+        var addresLink = data[i].addressLink;
+        var category = data[i].category;
+        var postObj = {
+          title: title,
+          content: content,
+          postId: id,
+          date: postDate,
+          image: img,
+          phoneNumber: phone,
+          address: address,
+          addressLink: addresLink,
+          category: category
+        }; 
         postsArr.push(postObj);
-      }
+     //  return postsArr;
+     }
   } catch (error) {
     console.log("posts error:: ", error);
   }
-  //  if (!postsArr || postsArr.length === 0) {
-  //    throw new Error("No posts found")
-  //   }
+
   
   return (
     <section className='container mx-auto px-14'>
