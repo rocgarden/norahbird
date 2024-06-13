@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export default function Error({ error, reset }) {
+export default function Error({ error }) {
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -12,9 +12,6 @@ export default function Error({ error, reset }) {
       <div className="errorMessage">
         <h2>Something went wrong while retrieving posts. Try again later.</h2>
       </div>
-      <button onClick={() => reset()}>
-        <div className="errorMessage">Try again </div>
-      </button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import PostCard from "../components/postCard";
 import { getPosts } from "@/_actions";
 import classes from './feed.module.css';
+import { Suspense } from "react";
 
 async function Feed() {  
    const currentDate = new Date().toLocaleDateString("en-us", {
@@ -38,8 +39,15 @@ const formattedDate = (postDate) => {
   );
   return date;
 }
-  var postsArr = [];
   const allPosts = await getPosts();
+
+  useEffect(() => {
+    allPosts
+  }, []);
+
+  var postsArr = [];
+  
+
   try {
       for (var i = 0; i < 10; i++){
           var title = capitalize(allPosts[i].title.toString());
@@ -66,10 +74,10 @@ const formattedDate = (postDate) => {
       }
   } catch (error) {
     console.log("posts error:: ", error);
-   if (!postsArr || postsArr.length === 0) {
-     throw new Error("No posts found")
-    }
   }
+  //  if (!postsArr || postsArr.length === 0) {
+  //    throw new Error("No posts found")
+  //   }
   
   return (
     <section className='container mx-auto px-14'>
@@ -88,7 +96,8 @@ const formattedDate = (postDate) => {
                       {post.date}
                    </time> 
                   </div> 
-                  <PostCard
+                  <Suspense fallback={<p>Loading data...</p>}>
+                      <PostCard
                     title={post.title}
                     content={post.content}
                     postId={post.postId}
@@ -97,7 +106,9 @@ const formattedDate = (postDate) => {
                     addressLink={post.addressLink}
                     address={post.address}
                     category={post.category}
-                  />
+                  /> 
+                  </Suspense>
+                                   
                 </div>
                 </>
               )

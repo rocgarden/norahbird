@@ -3,6 +3,9 @@ import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoDB";
 import Post from "@/app/models/PostSchema";
 import User from "@/app/models/userSchema";
+
+export const dynamic = "force-dynamic";
+
 async function init() {
   try {
     await connectDB();

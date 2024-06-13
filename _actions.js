@@ -90,7 +90,8 @@ export async function getPosts() {
   );
   return sortPostItems;
   } catch (error) {
-    return error;
+    throw new Error("No posts fetched");
+    //return error;
     //return NextResponse.json({message: "No items found"})
   }
 
