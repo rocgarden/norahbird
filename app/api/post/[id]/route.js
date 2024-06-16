@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import Post from "@/app/models/PostSchema";
 import mongoose from "mongoose";
 
+export const dynamic = "force-dynamic";
+
 export async function PUT(request, { params }) {
 //   const id = request.nextUrl.searchParams.get("id");
   
