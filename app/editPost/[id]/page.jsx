@@ -9,8 +9,8 @@ const getPostById = async (id) => {
     if (!res.ok) {
       throw new Error("Failed to fetch post");
     }
-    const postItem = res.json();
-    return postItem;
+    const postItem = await res.json();
+    return {postItem};
   } catch (error) {
     console.log(error);
   }
