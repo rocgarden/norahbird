@@ -2,7 +2,7 @@ import EditPost from "@/app/components/editPostForm";
 
 const getPostById = async (id) => {
   try {
-    const res = await fetch(`/api/post/${id}`, {
+    const res = await fetch(`/app/api/post/${id}`, {
       cache: "no-store",
     });
 
