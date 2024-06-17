@@ -7,7 +7,7 @@ export default async function EditPostItem({ params }) {
     const res = await fetch(`/api/post/${id}`, {
       cache: "no-store",
     });
-
+    console.log("res:: ",res.json())
     if (!res.ok) {
       throw new Error("Failed to fetch post");
     }
