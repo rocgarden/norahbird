@@ -91,7 +91,7 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
     {
     session ? (
         <div className="flex items-center gap-x-4 text-xs">
-           <Link href={`/editPost/${postId}`}>
+           <Link href={`app/editPost/${postId}`}>
                  <div className=" flex items-center gap-x-3">
                     <button type="submit" className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</button>
                 </div>  
