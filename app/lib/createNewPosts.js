@@ -120,7 +120,7 @@ export const getPostsById = async ({ creator }) => {
   try {
     user = await User.findOne({ email });
   } catch (err) {
-   return NextResponse.json({ msg: ["Unable to find user."] });
+    return NextResponse.json({ msg: ["Unable to find user."] });
   }
   userId = user._id;
   try {
@@ -132,7 +132,8 @@ export const getPostsById = async ({ creator }) => {
     return NextResponse.json({ msg: ["Unable to find posts."] });
   }
   return posts;
+};
 
-}
+
 
 

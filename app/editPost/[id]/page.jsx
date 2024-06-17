@@ -1,8 +1,10 @@
 import EditPost from "@/app/components/editPostForm";
 
-const getPostById = async (id) => {
-  try {
-    const res = await fetch(`${HOSTURL}/api/post/${id}`, {
+export default async function EditPostItem({ params }) {
+  const { id } = params;
+  //const { post } = await getPostById(id);
+ try {
+    const res = await fetch(`http://localhost:3000/api/post/${id}`, {
       cache: "no-store",
     });
 
@@ -10,19 +12,12 @@ const getPostById = async (id) => {
       throw new Error("Failed to fetch post");
     }
     const postItem = await res.json();
-    return {postItem};
+    const { title, content, phoneNumber, address, cloudinary_id } = postItem;
+
+  return <EditPost id={id} title={title} phoneNumber={phoneNumber} address={address} content={content} image={cloudinary_id} />;
+
+//return postItem;
   } catch (error) {
     console.log(error);
   }
-};
-
-export default async function EditPostItem({ params }) {
-  // console.log("PARAMS:: ",params)
-  const { id} = params;
-  const { post } = await getPostById(id);
-    console.log("PARAMS POST:: ",params, post)
-
-  const { title, content, phoneNumber, address, cloudinary_id } = post;
-
-  return <EditPost id={id} title={title} phoneNumber={phoneNumber} address={address} content={content} image={cloudinary_id} />;
 }
