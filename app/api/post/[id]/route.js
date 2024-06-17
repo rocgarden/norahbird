@@ -33,5 +33,5 @@ export async function GET(request, { params }) {
   await connectDB();
   const post = await Post.findOne({ _id: id });
   console.log("POST:: ",post)
-  return NextResponse.json(post , { status: 200 });
+  return NextResponse.json({post} , { status: 200 });
 }
