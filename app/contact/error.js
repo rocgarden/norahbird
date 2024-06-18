@@ -11,7 +11,7 @@ export default function Error({ error, reset }) {
 
   return (
     <div>
-      <h2>Something went wrong!{ error}</h2>
+      <h2>Something went wrong while trying to send this email! Please try again.{ error}</h2>
       <button
         onClick={
 

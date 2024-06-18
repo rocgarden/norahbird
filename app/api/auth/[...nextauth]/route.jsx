@@ -47,7 +47,8 @@ export const authOptions = {
           if (userExists.role === "admin") {
             return NextResponse.json({ msg: ["Success."] });
           } else {
-            return NextResponse.json({ msg: ["Unable to login."] });
+            throw new Error("Unable to authenticate. 😥");
+            //return NextResponse.json({ msg: ["Unable to login."] });
           }
           // if (!userExists) {
           //   const res = await fetch("http://localhost:3000/api/user", {
@@ -66,6 +67,7 @@ export const authOptions = {
           // }
         } catch (error) {
           console.log("routing err: ", error);
+          throw new Error("Unable to authenticate. 😥");
         }
       }
        return user

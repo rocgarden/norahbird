@@ -94,7 +94,7 @@ export default  function EditPost({id, title, address, phoneNumber, content, ima
     const confirmed = confirm("Ready to update?")
         try{
            if (confirmed) {
-            const res = await fetch(`http://localhost:3000/api/post/${id}`, {
+            const res = await fetch(`https://www.norahbird.com/api/post/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"
