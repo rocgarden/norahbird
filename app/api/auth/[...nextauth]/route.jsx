@@ -4,6 +4,7 @@ import connectDB from "@/app/lib/mongoDB";
 import User from "@/app/models/userSchema";
 import { NextResponse } from "next/server";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { redirect } from "next/dist/server/api-utils";
 
 let userExists;
 export const authOptions = {
@@ -21,7 +22,7 @@ export const authOptions = {
         const user = await User.findOne({ email });
 
         if (!user) {
-          throw new Error("Invalid Email or Password");
+          throw new Error(error,"Invalid Email or Password");
         }
         // const isPasswordMatched = await bcrypt.compare(password, user.password);
 
@@ -47,7 +48,7 @@ export const authOptions = {
           if (userExists.role === "admin") {
             return NextResponse.json({ msg: ["Success."] });
           } else {
-            throw new Error("Unable to authenticate. 😥");
+            throw new Error("Unable to authenticate user.");
             //return NextResponse.json({ msg: ["Unable to login."] });
           }
           // if (!userExists) {
