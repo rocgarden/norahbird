@@ -112,7 +112,7 @@ const signInButton = () => {
       //   >
       //   Sign In
       //  </button>  
-       <Link href="#" onClick={() => signIn({redirect:false,callbackUrl:"/"})}  className='rounded-md border border-stone-300 px-3 py-1 text-sm dark:border-stone-600'>
+       <Link href="#" onClick={() => signIn('user',{redirect:false,callbackUrl:"/"})}  className='rounded-md border border-stone-300 px-3 py-1 text-sm dark:border-stone-600'>
         Sign In
        </Link> 
         )
