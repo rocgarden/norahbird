@@ -47,7 +47,7 @@ export const authOptions = {
 
           userExists = await User.findOne({ email });
           if (!userExists) {
-            throw new Error(user.error,"No user found.")
+            throw new Error("No user found.")
           }
           if (userExists.role === "admin") {
             return NextResponse.json({ msg: ["Success."] });
