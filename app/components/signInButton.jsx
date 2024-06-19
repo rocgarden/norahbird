@@ -4,17 +4,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { Menu, Transition } from '@headlessui/react';
-// import clsx from 'clsx'
-
 import {
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/solid'
 
 
 const signInButton = () => {
-    const { data: session } = useSession();
-    // console.log(session)
-
+  const { data: session } = useSession();
   return (
       <div>
         {
@@ -111,8 +107,8 @@ const signInButton = () => {
       //   onClick={() => signIn()}
       //   >
       //   Sign In
-      //  </button>  
-       <Link href="#" onClick={() => signIn('user',{redirect:false,callbackUrl:"/"})}  className='rounded-md border border-stone-300 px-3 py-1 text-sm dark:border-stone-600'>
+      //  </button>
+       <Link href="#" onClick={() => signIn('user',{redirect:false, callbackUrl:"/"}, )}  className='rounded-md border border-stone-300 px-3 py-1 text-sm dark:border-stone-600'>
         Sign In
        </Link> 
         )

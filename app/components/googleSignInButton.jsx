@@ -6,8 +6,7 @@ import { signIn } from 'next-auth/react'
 import SubmitButton from './button'
 const GoogleSignInButton = (props) => {
   const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get('callbackUrl')
-
+  const callbackUrl = searchParams.get('callbackUrl');
   return (
     <SubmitButton
       className='w-full'

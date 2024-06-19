@@ -18,7 +18,7 @@ export const authOptions = {
         connectDB();
 
         const { email } = credentials;
-
+       
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -41,13 +41,16 @@ export const authOptions = {
     async signIn({ user, account }) {
       if (account.provider === "google") {
         const { email } = user;
-        if (!user) {
+         if (!user) {
           throw new Error("No user identified");
         }
         try {
           await connectDB();
 
           userExists = await User.findOne({ email });
+          if (!userExists) {
+            throw new Error(user.error,"No user found.")
+          }
           if (userExists.role === "admin") {
             return NextResponse.json({ msg: ["Success."] });
           } else {
@@ -71,7 +74,7 @@ export const authOptions = {
           // }
         } catch (error) {
           console.log("routing err: ", error);
-          throw new Error("Unable to authenticate. 😥");
+          throw new Error("Unable to authenticate user.");
         }
       }
        return user
@@ -85,10 +88,11 @@ export const authOptions = {
 
   pages: {
     signIn: "/signin",
-    protected: "/protected"
+    protected: "/protected",
   },
 };
 
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
+x

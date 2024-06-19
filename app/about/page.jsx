@@ -69,7 +69,7 @@ const about = () => {
     <div>
     {
       <Image 
-        src="/snora.jpeg"
+        src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}` + "/v1718822970/snora_advfnw.jpg"}
         alt="image" 
         width="0"
         height="0"
