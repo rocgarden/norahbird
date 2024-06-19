@@ -41,9 +41,7 @@ export const authOptions = {
     async signIn({ user, account }) {
       if (account.provider === "google") {
         const { email } = user;
-         if (!user) {
-          throw new Error("No user identified");
-        }
+       
         try {
           await connectDB();
 
