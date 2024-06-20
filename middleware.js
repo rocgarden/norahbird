@@ -35,7 +35,7 @@ export function middleware(request) {
     default-src * 'self';
     script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic';
     style-src 'self' 'nonce-${nonce}' fonts.googleapis.com;
-    img-src * 'self' blob: data: ;
+    img-src * 'self' blob: data: 'nonce-${nonce}' ;
     font-src 'self' https://fonts.gstatic.com ;
     object-src 'none';
     base-uri 'self';

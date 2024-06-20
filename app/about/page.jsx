@@ -23,41 +23,66 @@ const about = () => {
                   <div className="lg:flex hidden items-center space-x-6 lg:space-x-8">
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710185768/next/bday_vyoo89.jpg"}
-                          alt="bday"
-                          className="h-full w-full object-cover object-center"
-                        />
+                        <Image
+                        src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710185768/next/bday_vyoo89.jpg"}
+                        alt={'image'} 
+                        width="0"
+                        height="0"
+                        sizes="100vw , 100vh"
+                        className="h-full w-full object-cover object-center"
+                        priority
+                        /> 
                       </div>
                       <div className="h-45 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                        <img 
-                            src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710714711/apple-touch-icon_nsqu9s.png"}
-                          alt="logo"
-                          className="h-full w-full object-cover object-center"
-                        />
+                        <Image
+                        src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710714711/apple-touch-icon_nsqu9s.png"}
+                        alt={'image'} 
+                        width="0"
+                        height="0"
+                        sizes="100vw , 100vh"
+                        className="h-full w-full object-cover object-center"
+                        priority
+                        /> 
                       </div>
                     </div>
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                          <Image
                           src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1691982080/samples/food/dessert.jpg"}
-                          alt="pie"
+                          alt={'image'} 
+                          width="0"
+                          height="0"
+                          sizes="100vw , 100vh"
                           className="h-full w-full object-cover object-center"
-                        />
+                          priority
+                          /> 
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                          <Image
                           src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710714362/hiking_uv3pmf.jpg"}
-                          alt="hike"
+                          alt={'image'} 
+                          width="0"
+                          height="0"
+                          sizes="100vw , 100vh"
                           className="h-full w-full object-cover object-center"
-                        />
+                          priority
+                          /> 
                       </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                      <div className="h-64 w-44 overflow-hidden rounded-lg relative">
+                         {/* <img
                           src={process.env.NEXT_PUBLIC_CLOUDINARY_URL +"/v1710715969/mudrun_ivdoyb.jpg"}
                           alt="run"
                           className="h-full w-full object-cover object-center"
-                        />
+                          />  */}
+                          <Image
+                            src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + "/v1710715969/mudrun_ivdoyb.jpg"}
+                            alt={'bday_img'} 
+                            width="0"
+                            height="0"
+                            sizes="100vw , 100vh"
+                            className="h-full w-full object-cover object-center"
+                            priority
+                            /> 
                       </div>
                     </div>
                   </div>
