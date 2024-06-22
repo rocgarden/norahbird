@@ -23,7 +23,7 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: `default-src 'self'; font-src 'self' fonts.gstatic.com; img-src 'self' https://*.googletagmanager.com; script-src 'self' strict-dynamic 'unsafe-eval' https: 'unsafe-inline'  unsafe-inline https://*.googletagmanager.com; connect-src 'self' unsafe-eval https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://vercel.live/*; style-src 'self' 'unsafe-inline' fonts.googleapis.com`,
+            value: `default-src 'self'; font-src 'self' fonts.gstatic.com; img-src 'self' https://*.googletagmanager.com; script-src 'self' strict-dynamic 'unsafe-eval' https: 'unsafe-inline'  unsafe-inline https://*.googletagmanager.com; connect-src 'self' unsafe-eval https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://vercel.live/*; style-src 'self' fonts.googleapis.com`,
           },
           {
             key: "X-Frame-Options",
