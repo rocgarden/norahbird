@@ -11,10 +11,10 @@ const navbar = () => {
   return (          
 <nav className=" shadow-sm border-gray-200 dark:text-slate-900">
   <div className=" flex flex-wrap items-center justify-between mx-auto p-2">
-     <Link rel='preload'  href="/" className="flex items-center md:text-3xl sm:5xl">
+     <Link rel='preload'  href="/" className="flex items-center md:text-3xl sm:5xl ">
       {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" /> */}
        <img
-            className="mx-auto h-12 mr-3 w-auto"
+            className="animate-fly mx-auto h-12 mr-3 w-auto"
             src="/birdLogo.png"
             alt="Norah Bird"
             height='auto'

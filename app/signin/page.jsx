@@ -15,7 +15,7 @@ const SignInPage = () => {
         <div className="mx-auto flex w-full max-w-2xl flex-col px-4 sm:px-6">
         <div className="relative mt-12 sm:mt-16">
           <img
-            className="mx-auto h-20 w-auto"
+            className="animate-fly mx-auto h-20 w-auto"
             src="/birdLogo.png"
             alt="Norah Bird"
             height='auto'

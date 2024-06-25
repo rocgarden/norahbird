@@ -14,10 +14,16 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-architects-daughter)"],
         mono: ["var(--font-roboto-mono)"],
-      },   
+      },
+      keyframes: {
+        fly: {
+          "50%": { transform: "rotate(20deg)" },
+        },
+      },
+      animation: {
+        fly: "fly 2s infinite",
+      },
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };
