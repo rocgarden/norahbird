@@ -46,7 +46,7 @@ export default function Contact() {
       }
        setFormValues(formData);
       console.log("form values:: ",formValues )
-      await fetch('/api/email', {
+     const res = await fetch('/api/email', {
       method: 'POST',
         body: JSON.stringify(
         formValues
@@ -55,10 +55,11 @@ export default function Contact() {
       //   .then(res => 
       //    console.log(res, 'sent')
       // )
-      // if (res.ok) {
-      // } else {
-      //   console.log(res)
-      // }
+    if (!res.ok) {
+        throw new Error("Message not sent.Try again.", error.message)
+    } else {
+      //console.log("Body:: ",res.body)
+      }
       formRef.current.reset()
     
   }

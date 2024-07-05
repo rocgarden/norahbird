@@ -2,7 +2,7 @@ import Image from "next/image";
 import classes from './about.module.css';
 
 export const metadata = {
-  title: 'Norah Bird/About',
+  title: 'About',
   description: 'About Me, Norah Bird',
 }
 
