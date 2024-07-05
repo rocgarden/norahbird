@@ -16,6 +16,10 @@ const footer = () => {
       <Link className={classes.about} href="/contact">
         Contact
       </Link>
+       <div className='text-gray-500 hidden lg:flex'>|</div>
+      <Link className={classes.about} href="/privacy">
+        Privacy Policy
+      </Link>
       <div className='text-gray-500 hidden lg:flex'>|</div>
       <p className={classes.about}>Copyright ©{new Date().getFullYear()}</p> 
       </div>
