@@ -40,8 +40,6 @@ const formattedDate = (postDate) => {
 }
 async function fetchPosts() {
   const allPosts = await getPosts();
-    console.log("allposts body:: ", allPosts)
-
     if (!allPosts || allPosts.length === 0) {
     throw new Error("Posts not found");
   }
@@ -49,10 +47,31 @@ async function fetchPosts() {
 
 }
 
+export async function generateMetadata() {
+  const allPosts = await fetchPosts([]);
+  if (!allPosts) {
+    return;
+  }
+  var titleArray = [];
+  allPosts.forEach(post => {
+    titleArray.push(post.title);
+  });
+
+  var titles;
+  for (var i = 0; i < 10; i++){
+    titles = titleArray.join('-');
+  }
+  return (
+    {
+      title: titles,
+      description:"Best food places and fun to try in Santa Monica and around the Santa Monica area. Best Santa Monica places to eat good food and snacks. Best Bars in Santa Monica to try.",
+    }  
+  )
+}
+
 async function Feed() {   
   try {
    const data = await fetchPosts([]);
-   console.log("data:: ",data)
     var postsArr = [];
       for (var i = 0; i < 10; i++) {
         var title = capitalize(data[i].title.toString());

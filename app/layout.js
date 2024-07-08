@@ -15,7 +15,7 @@ export const metadata = {
     default: "Norah Bird - A Blog for good food in Santa Monica",
     template: "%s | Norah Bird - A Blog for good food in Santa Monica",
   },
-  description: "Next App on food and fun in and round Santa Monica",
+  description: "Blog on food and fun in Santa Monica and around the Santa Monica area. Best Santa Monica places to eat good food and snacks. Best Bars in Santa Monica to try.",
 };
 
 
