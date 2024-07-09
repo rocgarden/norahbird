@@ -9,8 +9,12 @@ const currentDate = new Date().toLocaleDateString("en-us", {
     month: "short",
     day: "numeric",
 });
-  const capitalize = (word) => {
-  return word[0].toUpperCase() + word.substring(1).toLowerCase();
+const capitalize = (words) => {
+  words.split(" ");
+  for (let i = 0; i < words.length; i++){
+    (words[i][0].toUpperCase() + words[i].substring(1).toLowerCase());
+  };
+  return words;
   };
 
   const phoneFormat = (input) => {
