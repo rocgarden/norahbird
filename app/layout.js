@@ -6,9 +6,13 @@ import Footer from './components/footer';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Analytics } from "@vercel/analytics/react";
+// import { Head } from 'next/document';
+import { headers } from "next/headers";
+import Script from "next/script";
 
 
 const inter = Inter({ subsets: ['latin'] })
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: {
@@ -20,9 +24,11 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
+const nonce = headers().get("x-nonce");
 
   return (
     <html lang="en">
+      {/* <Head nonce={ nonce} /> */}
       <body className={inter.className}>
         <Provider>
           <Navbar />
@@ -39,7 +45,12 @@ export default function RootLayout({ children }) {
           />
           <Footer />
         </Provider>
-        <Analytics/>
+        <Analytics />
+        <Script
+          src="self"
+          strategy="afterInteractive"
+          nonce={nonce}
+        />
       </body>
     </html>
   );

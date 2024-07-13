@@ -2,6 +2,8 @@ import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 
 export default withAuth(
+  console.log("middleware auth:: "),
+
   function middleware(req) {
     if (
       req.nextUrl.pathname === "/protected" &&
@@ -30,6 +32,9 @@ export const config = {
 
 export function middleware(request) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+  console.log("nonce:: ", nonce);
+    console.log("middleware:: ");
+
   const cspHeader = `
     default-src * 'self';
     script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic';
@@ -63,7 +68,20 @@ export function middleware(request) {
   response.headers.set(
     "Content-Security-Policy",
     contentSecurityPolicyHeaderValue
+  )
+  response.headers.set("X-Frame-Options", "deny");
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("Referrer-Policy", "strict-origin");
+  response.headers.set(
+    "Strict-Transport-Security",
+    "max-age=31536000; includeSubDomains; preload"
   );
+  response.headers.set("X-XSS-Protection", "1; mode=block");
+  response.headers.set(
+    "Permissions-Policy",
+    "camera=(self); battery=(); geolocation=(); microphone=()"
+  );
+
   return response;
 }
 
