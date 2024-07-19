@@ -2,7 +2,7 @@ import PostCard from "../components/postCard";
 import { getPosts } from "@/_actions";
 import classes from './feed.module.css';
 import { Suspense } from "react";
-
+import Featured from "../components/featured";
 const currentDate = new Date().toLocaleDateString("en-us", {
     weekday: "long",
     year: "numeric",
@@ -107,19 +107,31 @@ async function Feed() {
 
   
   return (
-    <section className='container mx-auto px-14'>
-      <div>
-        <p className={classes.date}   >{ currentDate}</p>
-      </div>
+   <div>
+    <div className='container mx-auto px-14 pb-10 justify-center '>
+    <section >
+      {/* <div class="flex flex-col justify-center items-center max-w-sm mx-auto my-8"> */}
+
+      <div className=" bg-white md:-mt-10 xs:mt-3 shadow-xl rounded-lg overflow-hidden">
+       <div className=" mx-8 overflow-hidden items-center justify-center">
+          <div className="text-gray-800 mt-8 font-semibold text-2xl">
+            <h4>Discover Local Spots Around Santa Monica.</h4>
+          </div>
+                {/* <p  >{currentDate}</p> */}
+          <div className="text-gray-600 mt-3 text-xs md:text-base">
+           <p>Here in Santa Monica, there are tons of restaurants and bars that are great to enjoy, but when you want something authentic, you always ask the locals. I am here to provide you some of the best spots to enjoy around Santa Monica.Take a tour of my favorite places to eat and have fun. Check back for more spots as I explore new places everyday.</p>
+          </div>
+     </div>
+   
       <div className="bg-white">
-        <div className="max-w-5xl px-6 lg:px-8">
-         <div className="flex flex-col justify-between mx-auto mt-10 max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="max-w-5xl px-6 ">
+         <div className="flex flex-col justify-between mx-auto mt-8 max-w-2xl grid-cols-1 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {postsArr?.map((post) => {
                 return (
                 <>
-                 <div key={post.id} className="items-center my-5 group relative">  
-                 <div className="border-b-2">
-                  <time dateTime="2020-03-16" className="text-gray-500">
+                 <div key={post.id} className="items-center group relative">  
+                 <div className="border-t-2 border-[#F6AF3B]">
+                  <time dateTime="2020-03-16" className="bg-[#F6AF3B] p-1 text-slate-50">
                       {post.date}
                    </time> 
                   </div> 
@@ -142,8 +154,21 @@ async function Feed() {
             })}
         </div>
       </div>
+        </div>
       </div>
       </section>
+      </div>
+      <div className=" mx-auto px-14 pb-5  ">
+                         {/* <div className="border-t-2 border-[#F6AF3B]"> */}
+       <div className="flex-1 mt-8 sm:py-1 py-0  overflow-hidden  rounded-sm border-t-2 border-[#F6AF3B]">
+            <p className="p-2 bg-[#F6AF3B] inline text-2xl text-slate-100">
+              Check Out Other Spots to Visit</p>
+      </div>
+      <div className="mt-8 ">
+        <Featured/>
+        </div>
+        </div>
+      </div>
     );
 
 

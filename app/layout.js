@@ -1,17 +1,14 @@
 import './globals.css'
-import { Inter,Architects_Daughter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import Navbar from './components/navbar';
 import Provider from './components/provider';
 import Footer from './components/footer';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Analytics } from "@vercel/analytics/react";
-// import { Head } from 'next/document';
 import { headers } from "next/headers";
-import Script from "next/script";
 
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 export const dynamic = "force-dynamic";
 
 export const metadata = {
@@ -43,14 +40,11 @@ const nonce = headers().get("x-nonce");
             closeOnClick
             pauseOnHover
           />
-          <Footer />
+          <div className="bg-gray-100">
+            <Footer />
+          </div>
         </Provider>
         <Analytics />
-        <Script
-          src="self"
-          strategy="afterInteractive"
-          nonce={nonce}
-        />
       </body>
     </html>
   );

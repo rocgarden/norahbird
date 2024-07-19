@@ -1,12 +1,12 @@
 .date{
-    margin-top: 25px;
-    font-size: 28px;
-    color: #0f172a;
-    font-family: 'Architects Daughter', cursive;
+    margin-top:23px;
+    font-size: 22px;
+    color: rgb(94, 98, 105);
+    padding-left: 10px;
 }
 
 .errorDiv{
     margin-top: 30px;
     font-size: 28px;
     color: #0f172a;
-    font-family: 'Architects Daughter', cursive;}
+}

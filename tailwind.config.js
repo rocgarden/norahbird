@@ -9,7 +9,7 @@ module.exports = {
     fontFamily: {
       ArchitectsDaughter: ["Architects Daughter", "cursive"],
     },
-
+   
     extend: {
       fontFamily: {
         sans: ["var(--font-architects-daughter)"],
