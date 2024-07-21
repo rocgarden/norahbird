@@ -73,7 +73,9 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
          </div>
     <div className="p-6 px-2 sm:pr-6 sm:pl-4">
       <h5 className={ classes.category}>{ category }</h5>
-      <h5 className=" mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">{ title }</h5>
+      <a href={`/`}>
+        <h5 className=" mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">{ title }</h5>
+      </a>
     {phoneNumber ? <a href={ "tel:" + 1+phoneNumber}   rel="noopener noreferrer" className="inline-flex items-center text-blue-600 hover:underline">
         <p className="mb-3 font-normal text-gray-500 dark:text-gray-900">{ phoneNumber }</p>
      <svg className="w-3 h-4 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="text-gray-500" viewBox="0 0 18 18">

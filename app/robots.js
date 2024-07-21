@@ -3,7 +3,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/protected/","/privacy"],
+      disallow: ["/protected/","/privacy", "signin"],
     },
     sitemap: "https://norahbird.com/sitemap.xml",
   };

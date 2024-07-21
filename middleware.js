@@ -32,8 +32,6 @@ export const config = {
 
 export function middleware(request) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-  console.log("nonce:: ", nonce);
-    console.log("middleware:: ");
 
   const cspHeader = `
     default-src * 'self';

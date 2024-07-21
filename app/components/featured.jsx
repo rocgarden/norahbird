@@ -30,7 +30,7 @@ return(
     {
         places.map((place) =>(
         <div className="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8 hover:-translate-y-1 hover:scale-110 hover:opacity-100 duration-300 ...">
-        <img src={place.img_url} alt=""className="overflow-hidden"/>
+         <img src={place.img_url} alt={place.card_title } className="overflow-hidden"/>
         <div className="p-4">
             <h3 className="font-medium text-gray-800 text-lg my-2 uppercase">{ place.card_title}</h3>
             <p className="text-justify text-gray-600">{ place.card_content}</p>

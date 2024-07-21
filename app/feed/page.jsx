@@ -1,6 +1,5 @@
 import PostCard from "../components/postCard";
 import { getPosts } from "@/_actions";
-import classes from './feed.module.css';
 import { Suspense } from "react";
 import Featured from "../components/featured";
 const currentDate = new Date().toLocaleDateString("en-us", {
@@ -52,7 +51,7 @@ async function fetchPosts() {
 }
 
 export async function generateMetadata() {
-  const allPosts = await fetchPosts([]);
+  const allPosts = await getPosts();
   if (!allPosts) {
     return;
   }
@@ -64,11 +63,23 @@ export async function generateMetadata() {
   var titles;
   for (var i = 0; i < 10; i++){
     titles = titleArray.join('-');
-  }
+  };
+
   return (
     {
       title: titles,
       description:"Best food places and fun to try in Santa Monica and around the Santa Monica area. Best Santa Monica places to eat good food and snacks. Best Bars in Santa Monica to try.",
+      openGraph: {
+      title: titles,
+      description:"Best food places and fun to try in Santa Monica and around the Santa Monica area. Best Santa Monica places to eat good food and snacks. Best Bars in Santa Monica to try.",
+      type: "website",
+      locale: "en_US",
+      url: "https://norahbird.com",
+      siteName: "Norah Bird"
+      },
+      alternates: {
+        canonical:`/feed`
+      }
     }  
   )
 }
@@ -115,7 +126,7 @@ async function Feed() {
       <div className=" bg-white md:-mt-10 xs:mt-3 shadow-xl rounded-lg overflow-hidden">
        <div className=" mx-8 overflow-hidden items-center justify-center">
           <div className="text-gray-800 mt-8 font-semibold text-2xl">
-            <h4>Discover Local Spots Around Santa Monica.</h4>
+            <h1>Discover Local Spots Around Santa Monica.</h1>
           </div>
                 {/* <p  >{currentDate}</p> */}
           <div className="text-gray-600 mt-3 text-xs md:text-base">

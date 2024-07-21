@@ -9,11 +9,10 @@ const hero = () => {
         <div className="flex flex-col justify-items-center pl-10 w-full md:flex-row md:w-1/2">
           
           <div className="max-w-lg  md:order-2">
-         
           <div className='hidden  w-full md:flex'>
            <div className="flex">
                 <img className="w-60 mt-5 " src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}` + "/v1721411674/snoraProfile_hs3sng.jpg "} alt="Profile picture" />
-              </div>
+            </div>
            {/* <img
             className="animate-fly h-32 mr-3 w-auto"
             src="/birdLogo.png"
@@ -23,13 +22,13 @@ const hero = () => {
           /> */}
             </div>
           <div className='bg-slate-100  w-50 p-3 -m-4'>
-           {/* <h1 className="ml-6 text-3xl border-b-2  font-medium tracking-wide text-gray-800 md:text-4xl">
-            Norah <span className={classes.name} >Bird</span>
-            </h1> */}
-            <p className='font-semibold border-b-2 border-gray-700  text-gray-700 my-4'>Food | Fun | Travel</p>
-            <p className="font-ArchitectsDaughter hidden md:block mt-2 text-base   text-gray-700">
+            <h1 className="sm:hidden block text-2xl font-medium tracking-wide text-gray-800 md:text-4xl">
+                 Norah <span className={classes.name} >Bird</span>
+            </h1>
+            <h2 className='font-semibold border-b-2 border-gray-700  text-gray-700 my-4'>Food | Fun | Travel</h2>
+            <h2 className="font-ArchitectsDaughter hidden md:block mt-2 text-base   text-gray-700">
               Sharing Places and food I enjoy everyday. 
-            </p>
+            </h2>
             </div>
           </div>
         </div>

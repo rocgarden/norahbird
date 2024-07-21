@@ -17,6 +17,14 @@ export const metadata = {
     template: "%s | Norah Bird - A Blog for good food in Santa Monica",
   },
   description: "Blog on food and fun in Santa Monica and around the Santa Monica area. Best Santa Monica places to eat good food and snacks. Best Bars in Santa Monica to try.",
+  applicationName: "Norah Bird",
+  authors: [{ name: "Norah Bird" }],
+  generator: 'Next.js',
+  keywords: ['norah bird', 'santa', 'monica', 'places', 'restaurants', 'food', 'coffee'],
+  referrer: 'origin-when-cross-origin',
+  creator: 'Norah Bird',
+  publisher: 'Norah Bird',
+  metadataBase: new URL('http://norahbird.com/'),
 };
 
 
