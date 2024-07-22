@@ -134,6 +134,23 @@ export const getPostsById = async ({ creator }) => {
   return posts;
 };
 
+export const getItemById = async ( id) => {
+  let item;
+  try {
+    item = await Post.findById({_id: id });
+    if (!item) {
+      const error = new Error("Item not found", {});
+      return next(error);
+    }
+  } catch (err) {
+    const error = new Error("Could not find post");
+    return error;
+  }
+    return item;
+}
+
+
+
 
 
 

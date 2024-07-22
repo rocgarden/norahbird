@@ -47,7 +47,7 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
 
      {
       confirmed ? 
-            <div><h2>{errorMessage}</h2></div>
+            <div><h3>{errorMessage}</h3></div>
             : null
     }
         {/* -----------next section */}
@@ -73,21 +73,26 @@ const postCard = ({ title, content, phoneNumber, address, addressLink, postId, i
          </div>
     <div className="p-6 px-2 sm:pr-6 sm:pl-4">
       <h5 className={ classes.category}>{ category }</h5>
-      <a href={`/`}>
+      <Link href={`/postDetail/${postId}`}>
         <h5 className=" mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">{ title }</h5>
-      </a>
-    {phoneNumber ? <a href={ "tel:" + 1+phoneNumber}   rel="noopener noreferrer" className="inline-flex items-center text-blue-600 hover:underline">
-        <p className="mb-3 font-normal text-gray-500 dark:text-gray-900">{ phoneNumber }</p>
-     <svg className="w-3 h-4 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="text-gray-500" viewBox="0 0 18 18">
+      </Link>
+    {phoneNumber ? 
+    <a href={ "tel:" + 1+phoneNumber}   rel="noopener noreferrer" className="inline-flex items-center text-blue-600 hover:underline">
+    <span className="pr-2">
+     <svg className="w-4 h-4 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="text-gray-200" viewBox="0 0 18 18">
           <path  strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"/>
-        </svg>
+     </svg>
+    </span>
+    <p className="mb-3 font-normal text-gray-500 dark:text-gray-900">{ phoneNumber }</p>
     </a> : null}
     { addressLink ? 
     (<a href={addressLink}  target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 hover:underline">
-     {address}
-     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/>
+     <span className="pr-3">
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-6 w-6">
+          <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd"></path>
       </svg>
+      </span>
+     {address}
     </a>) : 
      <p className="mb-3 font-normal text-gray-500 dark:text-gray-900">{ address }</p> 
     }

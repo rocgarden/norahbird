@@ -24,7 +24,10 @@ export const metadata = {
   referrer: 'origin-when-cross-origin',
   creator: 'Norah Bird',
   publisher: 'Norah Bird',
-  metadataBase: new URL('http://norahbird.com/'),
+  metadataBase: new URL('https://norahbird.com/'),
+  alternates: {
+    canonical:"https://norahbird.com"
+  }
 };
 
 
