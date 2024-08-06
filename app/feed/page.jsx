@@ -2,6 +2,8 @@ import PostCard from "../components/postCard";
 import { getPosts } from "@/_actions";
 import { Suspense } from "react";
 import Featured from "../components/featured";
+import Pagination from '../components/pagination';
+import Search from '../components/search';
 const currentDate = new Date().toLocaleDateString("en-us", {
     weekday: "long",
     year: "numeric",
@@ -41,8 +43,10 @@ const formattedDate = (postDate) => {
   );
   return date;
 }
-async function fetchPosts() {
-  const allPosts = await getPosts();
+async function fetchPosts({searchParams}) {
+  const page = searchParams.page === 'string' ? Number(searchParams.page) : 1;
+  const limit = searchParams.limit === 'string' ? Number(searchParams.limit) : 10;
+  const allPosts = await getPosts({page, limit,query:searchParams.search});
     if (!allPosts || allPosts.length === 0) {
     throw new Error("Posts not found");
   }
@@ -84,9 +88,13 @@ export async function generateMetadata() {
   )
 }
 
-async function Feed() {   
+async function Feed( searchParams ) {
+  const { page ,limit, search} = {searchParams};
   try {
-   const data = await fetchPosts([]);
+  
+    const data = await fetchPosts({ searchParams });
+    var resultsTotal = data.length;
+  
     var postsArr = [];
       for (var i = 0; i < 10; i++) {
         var title = capitalize(data[i].title.toString());
@@ -118,69 +126,98 @@ async function Feed() {
 
   
   return (
-   <div>
-    <div className='container mx-auto px-14 pb-10 justify-center '>
-    <section >
-      {/* <div class="flex flex-col justify-center items-center max-w-sm mx-auto my-8"> */}
+    <div>
+      <div className="container mx-auto px-14 pb-10 justify-center ">
+        <section>
+          {/* <div class="flex flex-col justify-center items-center max-w-sm mx-auto my-8"> */}
 
-      <div className=" bg-white md:-mt-10 xs:mt-3 shadow-xl rounded-lg overflow-hidden">
-       <div className=" mx-8 overflow-hidden items-center justify-center">
-          <div className="text-gray-800 mt-8 font-semibold text-2xl">
-            <h1>Discover Local Spots Around Santa Monica.</h1>
-          </div>
-                {/* <p  >{currentDate}</p> */}
-          <div className="text-gray-600 mt-3 text-xs md:text-base">
-           <p>Here in Santa Monica, there are tons of restaurants and bars that are great to enjoy, but when you want something authentic, you always ask the locals. I am here to provide you some of the best spots to enjoy around Santa Monica.Take a tour of my favorite places to eat and have fun. Check back for more spots as I explore new places everyday.</p>
-          </div>
-     </div>
-   
-      <div className="bg-white">
-        <div className="max-w-5xl px-6 ">
-         <div className="flex flex-col justify-between mx-auto mt-8 max-w-2xl grid-cols-1 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {postsArr?.map((post) => {
-                return (
-                <>
-                 <div key={post.id} className="items-center group relative">  
-                 <div className="border-t-2 border-[#F6AF3B]">
-                  <time dateTime="2020-03-16" className="bg-[#F6AF3B] p-1 text-slate-50">
-                      {post.date}
-                   </time> 
-                  </div> 
-                  <Suspense fallback={<p>Loading data...</p>}>
-                      <PostCard
-                    title={post.title}
-                    content={post.content}
-                    postId={post.postId}
-                    image={post.image}
-                    phoneNumber={post?.phoneNumber}
-                    addressLink={post.addressLink}
-                    address={post.address}
-                    category={post.category}
-                  /> 
-                  </Suspense>
-                                   
+          <div className=" bg-white md:-mt-10 xs:mt-3 shadow-xl rounded-lg overflow-hidden">
+            <div className=" mx-8 overflow-hidden items-center justify-center">
+              <div className="text-gray-800 mt-8 font-semibold text-2xl">
+                <h1>Discover Local Spots Around Santa Monica.</h1>
+              </div>
+              {/* <p  >{currentDate}</p> */}
+              <div className="text-gray-600 mt-3 text-xs md:text-base">
+                <p>
+                  Here in Santa Monica, there are tons of restaurants and bars
+                  that are great to enjoy, but when you want something
+                  authentic, you always ask the locals. I am here to provide you
+                  some of the best spots to enjoy around Santa Monica.Take a
+                  tour of my favorite places to eat and have fun. Check back for
+                  more spots as I explore new places everyday.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center md:justify-end mr-5">
+              <div className="my-3 mx-3">
+                <Search className="w-1/3" search={search} />
+              </div>
+            </div>
+            {searchParams.search && (
+              <div className="flex mx-8 sm:justify-normal  justify-center">
+                <div className="text-gray-800 mt-8 font-semibold text-2xl">
+                  <h2 className="hidden md:block">
+                    Search Results: {resultsTotal} total items.
+                  </h2>
+                  <div className="">
+                    <Pagination search={search} page={page} />
+                  </div>
                 </div>
-                </>
-              )
-            })}
-        </div>
-      </div>
-        </div>
-      </div>
-      </section>
+              </div>
+            )}
+            <div className="bg-white">
+              <div className="max-w-5xl px-6 ">
+                <div className="flex flex-col justify-between mx-auto mt-8 max-w-2xl grid-cols-1 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                  {postsArr?.map((post) => {
+                    return (
+                      <>
+                        <div
+                          key={post.id}
+                          className="items-center group relative"
+                        >
+                          <div className="border-t-2 border-[#F6AF3B]">
+                            <time
+                              dateTime="2020-03-16"
+                              className="bg-[#F6AF3B] p-1 text-slate-50"
+                            >
+                              {post.date}
+                            </time>
+                          </div>
+                          <Suspense fallback={<p>Loading data...</p>}>
+                            <PostCard
+                              title={post.title}
+                              content={post.content}
+                              postId={post.postId}
+                              image={post.image}
+                              phoneNumber={post?.phoneNumber}
+                              addressLink={post.addressLink}
+                              address={post.address}
+                              category={post.category}
+                            />
+                          </Suspense>
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <div className=" mx-auto px-14 pb-5  ">
-                         {/* <div className="border-t-2 border-[#F6AF3B]"> */}
-       <div className="flex-1 mt-8 sm:py-1 py-0  overflow-hidden  rounded-sm border-t-2 border-[#F6AF3B]">
-            <p className="p-2 bg-[#F6AF3B] inline text-2xl text-slate-100">
-              Check Out Other Spots to Visit</p>
-      </div>
-      <div className="mt-8 ">
-        <Featured/>
+        {/* <div className="border-t-2 border-[#F6AF3B]"> */}
+        <div className="flex-1 mt-8 sm:py-1 py-0  overflow-hidden  rounded-sm border-t-2 border-[#F6AF3B]">
+          <p className="p-2 bg-[#F6AF3B] inline text-2xl text-slate-100">
+            Check Out Other Spots to Visit
+          </p>
         </div>
+        <div className="mt-8 ">
+          <Featured />
         </div>
       </div>
-    );
+    </div>
+  );
 
 
 

@@ -81,9 +81,10 @@ export async function addEntry(
 // };
 
 //sort posts by date
-export async function getPosts() {
+export async function getPosts({ page, limit, query }) {
+  console.log("seasrchPArams from actions:: ",page, limit, query);
   try {
-  const posts = await getAllPosts();
+  const posts = await getAllPosts({page,limit, query});
   const allPosts =await posts.json();
   const sortPostItems = allPosts.slice().sort((postA, postB) =>
     postA._id > postB._id ? -1 : 1
@@ -91,7 +92,6 @@ export async function getPosts() {
   
   return sortPostItems;
   } catch (error) {
-    //return error;
     return NextResponse.json({message: "No items found", error: error.message})
   }
 

@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoDB";
 import Post from "@/app/models/PostSchema";
 import User from "@/app/models/userSchema";
+import { number } from "prop-types";
 
 export const dynamic = "force-dynamic";
 
@@ -62,12 +63,10 @@ export const createNewPost = async ({
 };
 
 export const deletePostById = async (postId) => {
-  //  const id = request.nextUrl.searchParams.get("id");
   const id = postId;
   let post;
   try {
     post = await Post.findById(id).populate("creator");
-    console.log("post:: ", post);
   } catch (err) {
     console.log("post:", err);
      return NextResponse.json({ msg: ["Unable to find post by id."] });
@@ -94,22 +93,46 @@ export const deletePostById = async (postId) => {
   }
 };
 
-export const getAllPosts = async () => {
+export const getAllPosts = async ({ page, limit, query }) => {
   let posts;
+  console.log({ page, query });
   try {
-    posts = await Post.find();
-    if (!posts || posts.length === 0) {
-    const error = new Error("Posts not found");
-    return NextResponse.json(
-      { msg: ["Unable to find posts."] },
-      { status: 500 }
-    );
-  }
+    const skip = (page - 1) * limit;
+    if (query) {
+      posts = await Post.aggregate([
+        {
+          $search: {
+            index: "autocomplete",
+            text: {
+              query: query,
+              fuzzy: {
+                maxEdits: 1,
+                prefixLength: 3,
+                maxExpansions: 50,
+              },
+              path: {
+                wildcard: "*",
+              },
+            },
+          },
+        },
+      ]);
+    } else {
+      posts = await Post.find();
+    }
+    if (!posts) {
+      return NextResponse.json
+        ({ status: 500 },
+        { msg: ["Unable to find posts."] },
+      );
+    
+    }
+     return NextResponse.json(posts, { status: 200 });
+
   } catch (error) {
-    return NextResponse.json({ msg: ["Unable to find posts."] }, {status: 500});
+    return NextResponse.json({ msg: ["Unable to find posts."] }, { status: 500 });
   }
-   
- return NextResponse.json(posts, {status: 200});
+//  return NextResponse.json(posts ,agg,{status: 200});
 };
 
 export const getPostsById = async ({ creator }) => {
