@@ -51,7 +51,7 @@ const nonce = headers().get("x-nonce");
             closeOnClick
             pauseOnHover
           />
-          <div className="bg-gray-100">
+          <div className=" bg-gray-100">
             <Footer />
           </div>
         </Provider>

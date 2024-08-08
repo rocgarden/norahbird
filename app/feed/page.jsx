@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import Featured from "../components/featured";
 import Pagination from '../components/pagination';
 import Search from '../components/search';
+import Hero from "../components/hero";
 const currentDate = new Date().toLocaleDateString("en-us", {
     weekday: "long",
     year: "numeric",
@@ -127,11 +128,12 @@ async function Feed( searchParams ) {
   
   return (
     <div>
-      <div className="container mx-auto px-14 pb-10 justify-center ">
+      <Hero/>
+      <div className="relative container mx-auto px-14 pb-10 justify-center ">
         <section>
           {/* <div class="flex flex-col justify-center items-center max-w-sm mx-auto my-8"> */}
 
-          <div className=" bg-white md:-mt-10 xs:mt-3 shadow-xl rounded-lg overflow-hidden">
+          <div className=" bg-white md:-mt-10 xs:mt-3 shadow-xl rounded-lg overflow-hidden z-8">
             <div className=" mx-8 overflow-hidden items-center justify-center">
               <div className="text-gray-800 mt-8 font-semibold text-2xl">
                 <h1>Discover Local Spots Around Santa Monica.</h1>

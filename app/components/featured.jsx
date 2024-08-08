@@ -25,7 +25,7 @@ export default function Featured() {
 return(
 <div className="container  mx-auto my-5 transition ease-in-out delay-150 lg:bg-white ">
 <div>
-  <div className="relative items-center justify-center">
+  <div className=" items-center justify-center">
     <div className="lg:flex items-center container mx-auto my-auto">
     {
         places.map((place) =>(
