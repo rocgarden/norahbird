@@ -20,23 +20,29 @@ export async function generateMetadata({params}) {
   if (!placeItem) {
     return;
   }  
-  return (
-    {
+  return {
+    title: placeItem.data.title,
+    description: placeItem.data.content,
+    openGraph: {
       title: placeItem.data.title,
       description: placeItem.data.content,
-      openGraph: {
-      title: placeItem.title,
-      description: placeItem.content,
       type: "website",
       locale: "en_US",
       url: `https://norahbird.com/postDetail/${id}`,
-      siteName: "Norah Bird"
+      siteName: "Norah Bird",
+      tags: placeItem.data.category,
+      images: {
+        url: placeItem.data.cloudinary_id,
+        width: 1024,
+        height: 576,
+        alt: placeItem.data.title
       },
-      alternates: {
-        canonical:`/postDetail`
-      }
-    }  
-  )
+    },
+
+    alternates: {
+      canonical: `/postDetail${id}`,
+    },
+  };
 }
 
 export default async function PostDetail({ params }) {

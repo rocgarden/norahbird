@@ -48,7 +48,7 @@ const signInButton = () => {
             leaveFrom='transform scale-100 opacity-100'
             leaveTo='transform scale-95 opacity-0'
           >  
-         <Menu.Items className='bg-react dark:text-react absolute right-0 mt-1 flex w-96 origin-top-right flex-col rounded-xl py-6 text-white shadow-lg focus:outline-none dark:bg-white'>
+         <Menu.Items className='bg-react dark:text-react absolute z-10 right-0 mt-1 flex w-96 origin-top-right flex-col rounded-xl py-6 text-white shadow-lg focus:outline-none dark:bg-white'>
         <div className='mb-4 flex gap-4 px-6 text-sm'>
        {
         session?.user?.image ? (

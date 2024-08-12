@@ -1,4 +1,12 @@
-export default function Featured() {
+import { getPlaces } from "@/_actions";
+
+export default async function Featured() {
+    const allPlaces = await getPlaces();
+    if (!allPlaces || allPlaces.length === 0) {
+    throw new Error("Places not found");
+    }
+  console.log("places:: ",allPlaces)
+  //return allPosts;
     const places = [
         {
         id: 1,
@@ -22,28 +30,39 @@ export default function Featured() {
         directions: "https://maps.app.goo.gl/uw1vMMRFmrCRMyVB7"
         },
     ]
-return(
-<div className="container  mx-auto my-5 transition ease-in-out delay-150 lg:bg-white ">
-<div>
-  <div className=" items-center justify-center">
-    <div className="lg:flex items-center container mx-auto my-auto">
-    {
-        places.map((place) =>(
-        <div className="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8 hover:-translate-y-1 hover:scale-110 hover:opacity-100 duration-300 ...">
-         <img src={place.img_url} alt={place.card_title } className="overflow-hidden"/>
-        <div className="p-4">
-            <h3 className="font-medium text-gray-800 text-lg my-2 uppercase">{ place.card_title}</h3>
-            <p className="text-justify text-gray-600">{ place.card_content}</p>
-          <div className="mt-5">
-            <a href={place.directions} className="text-gray-800 hover:bg-gray-700 hover:text-white rounded-md border border-stone-300 px-3 py-1 text-sm dark:border-stone-600">Google Maps</a>
-          </div>
+return (
+  <div className="container mx-auto my-5 transition ease-in-out delay-150 lg:bg-white ">
+    <div>
+      <div className=" items-center justify-center">
+        <div className="lg:flex items-center container mx-auto my-auto">
+          {allPlaces.map((place) => (
+            <div className="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8 hover:-translate-y-1 hover:scale-110 hover:opacity-100 duration-300 ...">
+              <img
+                src={place.imageURL}
+                alt={place.placeName}
+                className="h-80 w-full object-cover object-center "
+              />
+              <div className="p-4">
+                <h3 className="font-medium text-gray-800 text-lg my-2 uppercase">
+                  {place.placeName}
+                </h3>
+                <p className="text-justify text-gray-600">
+                  {place.placeAddress}
+                </p>
+                <div className="mt-5">
+                  <a
+                    href={place.addressLink}
+                    className="text-gray-800 hover:bg-gray-700 hover:text-white rounded-md border border-stone-300 px-3 py-1 text-sm dark:border-stone-600"
+                  >
+                    Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-        ))
-    }
     </div>
   </div>
-</div>  
-</div>
-)
+);
 }

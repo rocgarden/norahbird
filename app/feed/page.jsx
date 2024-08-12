@@ -207,7 +207,7 @@ async function Feed( searchParams ) {
           </div>
         </section>
       </div>
-      <div className=" mx-auto px-14 pb-5  ">
+      <div className=" mx-auto px-14 pb-5">
         {/* <div className="border-t-2 border-[#F6AF3B]"> */}
         <div className="flex-1 mt-8 sm:py-1 py-0  overflow-hidden  rounded-sm border-t-2 border-[#F6AF3B]">
           <p className="p-2 bg-[#F6AF3B] inline text-2xl text-slate-100">

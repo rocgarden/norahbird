@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoDB";
 import Post from "@/app/models/PostSchema";
 import User from "@/app/models/userSchema";
+import Place from "@/app/models/placeSchema";
 import { number } from "prop-types";
 
 export const dynamic = "force-dynamic";
@@ -157,10 +158,10 @@ export const getPostsById = async ({ creator }) => {
   return posts;
 };
 
-export const getItemById = async ( id) => {
+export const getItemById = async (id) => {
   let item;
   try {
-    item = await Post.findById({_id: id });
+    item = await Post.findById({ _id: id });
     if (!item) {
       const error = new Error("Item not found", {});
       return next(error);
@@ -169,8 +170,66 @@ export const getItemById = async ( id) => {
     const error = new Error("Could not find post");
     return error;
   }
-    return item;
-}
+  return item;
+};
+
+export const createNewPlace = async ({
+  placeName,
+  placeAddress,
+  category,
+  addressLink,
+  creator,
+  imageURL,
+}) => {
+  let email = creator.email;
+  let user;
+  try {
+    user = await User.findOne({ email });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ msg: ["Unable to create post."] });
+  }
+  const createNewPlace = await Place.create({
+    placeName,
+    placeAddress,
+    category,
+    addressLink,
+    creator: user._id,
+    imageURL,
+  });
+  try {
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await createNewPlace.save({ session: sess });
+    user.places.push(createNewPlace);
+    await user.save({ session: sess });
+    sess.commitTransaction();
+  } catch (err) {
+    const error = new Error("Unable to post");
+    console.log("error:: ", error.message, err);
+    return NextResponse.json({ msg: ["Unable to create post."] });
+  }
+};
+
+export const getAllPlaces = async () => {
+  let places;
+  try {
+      places = await Place.find();
+    if (!places) {
+      return NextResponse.json(
+        { status: 500 },
+        { msg: ["Unable to find posts."] }
+      );
+    }
+    return NextResponse.json(places, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { msg: ["Unable to find featured places."] },
+      { status: 500 }
+    );
+  }
+  //  return NextResponse.json(posts ,agg,{status: 200});
+};
 
 
 

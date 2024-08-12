@@ -1,14 +1,14 @@
 "use server"
 import { v2 as cloudinary } from "cloudinary";
 
-import { createNewPost } from "./app/lib/createNewPosts"
+import { createNewPost, getAllPlaces } from "./app/lib/createNewPosts"
 import { getAllPosts } from "./app/lib/createNewPosts";
 import { getPostsById } from "./app/lib/createNewPosts";
 import { deletePostById } from "./app/lib/createNewPosts";
 import { redirect } from "next/navigation";
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
-
+import { createNewPlace } from "./app/lib/createNewPosts";
 const cloudinaryConfig = cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
   api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
@@ -71,7 +71,32 @@ export async function addEntry(
     return NextResponse.json({message: "Unable to create new post." }, { status: 400 }, {error: error});
   }
   redirect(`/`);
+};
+
+export async function addNewPlace(data, creator,) {
+   const { imageURL, placeName, placeAddress, addressLink, } =
+     Object.fromEntries(data);
+  try {
+    if (data) {
+      await createNewPlace({
+        imageURL,
+        placeName,
+        placeAddress,
+        addressLink,
+        creator,
+      })
+    }
+  } catch (error) {
+        return NextResponse.json(
+          { message: "Unable to create new place item." },
+          { status: 400 },
+          { error: error }
+        );
+  }
+    redirect(`/`);
 }
+
+
    
 // export async function getPosts(){
 //     const posts = await getAllPosts();
@@ -128,3 +153,9 @@ export async function getSignature() {
   return { timestamp, signature };
 }
 
+export async function getPlaces(){
+    const places = await getAllPlaces();
+    // console.log("action posts:: ", posts);
+   
+    return places.json();   
+};
