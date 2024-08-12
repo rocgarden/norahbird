@@ -3,6 +3,7 @@ import React from "react";
 import { useRef } from "react";
 import { useSession } from "next-auth/react";
 import { addNewPlace } from "@/_actions";
+import { redirect } from "next/navigation";
 
 function newPlace() {
   const formRef = useRef(null);
