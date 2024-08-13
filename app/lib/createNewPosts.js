@@ -231,6 +231,47 @@ export const getAllPlaces = async () => {
   //  return NextResponse.json(posts ,agg,{status: 200});
 };
 
+export const deletePlaceById = async (placeId) => {
+  const id = placeId;
+  let place;
+  try {
+    place = await Place.findById(id).populate("creator");
+  } catch (err) {
+    console.log("place:", err);
+    return NextResponse.json({ msg: ["Unable to find place by id."] });
+  }
+
+  //check if place exists
+  if (!place) {
+    return NextResponse.json({
+      error: "Post not found",
+      msg: ["Unable to find post."],
+      status: 401,
+    });
+  }
+  if (!place.creator) {
+    return NextResponse.json({
+      error: "Author not found.",
+      msg: ["Unable to find author."],
+      status: 400,
+    });
+  }
+  try {
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await place.deleteOne({ session: sess });
+    place.creator.places.pull(place);
+    await place.creator.save({ session: sess });
+    await sess.commitTransaction();
+    return NextResponse.json({ message: "Success:: ", status: 200 });
+  } catch (err) {
+    return NextResponse.json({
+      error: "Could not delete place right now. Try again later.",
+      msg: ["Unable to delete place."],
+      status: 500,
+    });
+  }
+};
 
 
 

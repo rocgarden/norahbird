@@ -1,10 +1,10 @@
 import PostCard from "../components/postCard";
 import { getPosts } from "@/_actions";
 import { Suspense } from "react";
-import Featured from "../components/featured";
 import Pagination from '../components/pagination';
 import Search from '../components/search';
 import Hero from "../components/hero";
+import FeaturedPlaces from "../featured_places/page";
 const currentDate = new Date().toLocaleDateString("en-us", {
     weekday: "long",
     year: "numeric",
@@ -215,7 +215,7 @@ async function Feed( searchParams ) {
           </p>
         </div>
         <div className="mt-8 ">
-          <Featured />
+          <FeaturedPlaces />
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { deletePostById } from "./app/lib/createNewPosts";
 import { redirect } from "next/navigation";
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
-import { createNewPlace } from "./app/lib/createNewPosts";
+import { createNewPlace, deletePlaceById } from "./app/lib/createNewPosts";
 const cloudinaryConfig = cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
   api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
@@ -159,3 +159,19 @@ export async function getPlaces(){
    
     return places.json();   
 };
+
+export async function deletePlace(placeId) {
+  try {
+    const res = await deletePlaceById(placeId);
+    const data = await res.json();
+    if (data.status != 200) {
+      console.log("places data:: ", data);
+      revalidateTag("places"); // Update cached posts
+      return { data };
+    }
+    revalidateTag("places"); // Update cached posts
+    return { data };
+  } catch (error) {
+    return error;
+  }
+}
