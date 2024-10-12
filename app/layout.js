@@ -37,7 +37,7 @@ const nonce = headers().get("x-nonce");
   return (
     <html lang="en">
       {/* <Head nonce={ nonce} /> */}
-      <body className={inter.className}>
+      <body className={inter.className} style={{ backgroundColor: "#ffedd5" }}>
         <Provider>
           <Navbar />
           {children}
