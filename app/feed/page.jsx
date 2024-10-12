@@ -127,7 +127,7 @@ async function Feed( searchParams ) {
 
   
   return (
-    <div>
+    <div className="bg-orange-100">
       <Hero/>
       <div className="relative container mx-auto px-14 pb-10 justify-center ">
         <section>
@@ -141,8 +141,8 @@ async function Feed( searchParams ) {
               {/* <p  >{currentDate}</p> */}
               <div className="text-gray-600 mt-3 text-xs md:text-base">
                 <p>
-                  Here in Santa Monica, there are tons of restaurants and bars
-                  that are great to enjoy, but when you want something
+                 It's fall here in Santa Monica, there are tons of cafes and local bakeries
+                  that are great to enjoy a nice warm coffee or favorite fall flavors, but when you want something
                   authentic, you always ask the locals. I am here to provide you
                   some of the best spots to enjoy around Santa Monica.Take a
                   tour of my favorite places to eat and have fun. Check back for

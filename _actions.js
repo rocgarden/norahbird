@@ -73,6 +73,8 @@ export async function addEntry(
   redirect(`/`);
 };
 
+// ---------add a new featured places section----------------
+
 export async function addNewPlace(data, creator,) {
    const { imageURL, placeName, placeAddress, addressLink, } =
      Object.fromEntries(data);
@@ -105,7 +107,7 @@ export async function addNewPlace(data, creator,) {
 //     return posts.json();   
 // };
 
-//sort posts by date
+//sort posts in main feed by date
 export async function getPosts({ page, limit, query }) {
   console.log("seasrchPArams from actions:: ",page, limit, query);
   try {
@@ -122,6 +124,7 @@ export async function getPosts({ page, limit, query }) {
 
 }
 
+//delete post by Id in main feed only
 export async function deleteById(postId) {
   try {
     const res = await deletePostById(postId);
@@ -153,6 +156,8 @@ export async function getSignature() {
   return { timestamp, signature };
 }
 
+
+//get featured places section
 export async function getPlaces(){
     const places = await getAllPlaces();
     // console.log("action posts:: ", posts);
@@ -160,6 +165,7 @@ export async function getPlaces(){
     return places.json();   
 };
 
+//delete  place from featured places section
 export async function deletePlace(placeId) {
   try {
     const res = await deletePlaceById(placeId);

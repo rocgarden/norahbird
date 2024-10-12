@@ -173,6 +173,7 @@ export const getItemById = async (id) => {
   return item;
 };
 
+//create new place in featured section
 export const createNewPlace = async ({
   placeName,
   placeAddress,
@@ -211,6 +212,7 @@ export const createNewPlace = async ({
   }
 };
 
+//GET all places in featured
 export const getAllPlaces = async () => {
   let places;
   try {
@@ -230,7 +232,7 @@ export const getAllPlaces = async () => {
   }
   //  return NextResponse.json(posts ,agg,{status: 200});
 };
-
+//DELETE place in featured section
 export const deletePlaceById = async (placeId) => {
   const id = placeId;
   let place;

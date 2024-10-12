@@ -9,9 +9,9 @@ const navbar = () => {
     const { status, data: session } = useSession();
 
   return (
-    <nav className="  shadow-sm border-gray-200 dark:text-slate-900">
-      <div className=''>
-        <div className="flex flex-wrap items-center justify-between mx-auto p-2">
+    <nav className="shadow-sm bg-transparent border-gray-200 dark:text-slate-900">
+      <div className="">
+        <div className="flex flex-wrap  items-center justify-between mx-auto p-2">
           <Link
             rel="preload"
             href="/"
@@ -47,12 +47,12 @@ const navbar = () => {
               <>
                 {status === "authenticated" && session ? (
                   <>
-                  <li className="text-sm">
-                    <Link href="/protected">Protected</Link>
-                  </li>
                     <li className="text-sm">
-                    <Link href="/create_new_place">Featured Places</Link>
-                  </li>
+                      <Link href="/protected">Protected</Link>
+                    </li>
+                    <li className="text-sm">
+                      <Link href="/create_new_place">Featured Places</Link>
+                    </li>
                   </>
                 ) : null}
               </>

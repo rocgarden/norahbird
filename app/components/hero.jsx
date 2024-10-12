@@ -2,7 +2,13 @@ import classes from './hero.module.css';
 
 const hero = () => {
   return (
-    <header className=" bg-slate-100 border-t-2 border-slate-100 text-slate-50">
+    <header
+      className=" bg-brown-100 border-t-2 border-slate-100 text-slate-50 w-full bg-center"
+      style={{
+        height: "25rem",
+        backgroundImage: `url(/leaves-8724_128.gif)`,
+      }}
+    >
       <div className="container flex flex-col md:flex-row sm:mx-auto lg:mr-0 md:h-115 md:items-center md:space-x-6">
         {/* px-6 py-4  md:pb-16 */}
         <div className=" mr-5 flex flex-col justify-items-center pl-10 pb-10 w-full md:flex-row md:w-1/2">
