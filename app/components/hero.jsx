@@ -4,10 +4,10 @@ const hero = () => {
   return (
     <header
       className=" bg-brown-100 border-t-2 border-slate-100 text-slate-50 w-full bg-center"
-      style={{
-        height: "25rem",
-        backgroundImage: `url(/leaves-8724_128.gif)`,
-      }}
+      // style={{
+      //   height: "25rem",
+      //   backgroundImage: `url(/leaves-8724_128.gif)`,
+      // }}
     >
       <div className="container flex flex-col md:flex-row sm:mx-auto lg:mr-0 md:h-115 md:items-center md:space-x-6">
         {/* px-6 py-4  md:pb-16 */}
