@@ -127,7 +127,7 @@ async function Feed( searchParams ) {
 
   
   return (
-    <div className="bg-orange-100">
+    <div >
       <Hero/>
       <div className="relative container mx-auto px-14 pb-10 justify-center ">
         <section>
@@ -141,9 +141,8 @@ async function Feed( searchParams ) {
               {/* <p  >{currentDate}</p> */}
               <div className="text-gray-600 mt-3 text-xs md:text-base">
                 <p>
-                 It's fall here in Santa Monica, there are tons of cafes and local bakeries
-                  that are great to enjoy a nice warm coffee or favorite fall flavors, but when you want something
-                  authentic, you always ask the locals. I am here to provide you
+                 It's Spring here in Santa Monica, there are tons of cafes and local bakeries
+                  that are great to enjoy a nice warm coffee or favorite spring flavors. I am here to provide you
                   some of the best spots to enjoy around Santa Monica.Take a
                   tour of my favorite places to eat and have fun. Check back for
                   more spots as I explore new places everyday.
@@ -177,10 +176,10 @@ async function Feed( searchParams ) {
                           key={post.id}
                           className="items-center group relative"
                         >
-                          <div className="border-t-2 border-[#F6AF3B]">
+                          <div className="border-t-2 border-[#2323FF]">
                             <time
                               dateTime="2020-03-16"
-                              className="bg-[#F6AF3B] p-1 text-slate-50"
+                              className="bg-[#2323FF] p-1 text-slate-50"
                             >
                               {post.date}
                             </time>
@@ -209,11 +208,11 @@ async function Feed( searchParams ) {
       </div>
       <div className=" mx-auto px-14 pb-5">
         {/* <div className="border-t-2 border-[#F6AF3B]"> */}
-        <div className="flex-1 mt-8 sm:py-1 py-0  overflow-hidden  rounded-sm border-t-2 border-[#F6AF3B]">
+        {/* <div className="flex-1 mt-8 sm:py-1 py-0  overflow-hidden  rounded-sm border-t-2 border-[#F6AF3B]">
           <p className="p-2 bg-[#F6AF3B] inline text-2xl text-slate-100">
             Check Out Other Spots to Visit
           </p>
-        </div>
+        </div> */}
         <div className="mt-8 ">
           <FeaturedPlaces />
         </div>
