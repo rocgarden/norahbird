@@ -10,14 +10,14 @@ const hero = () => {
         {/* Left Section: Square with Image on Top and Text Box Below */}
         <div className="flex flex-col items-center justify-center   pb-1 -mb-80 w-80 h-80 relative z-10">
           {/* Image on top */}
-          <img
+          {/* <img
             className="w-full h-2/3 object-cover rounded-t-lg"
             src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/v1721411674/snoraProfile_hs3sng.jpg`}
             alt="Profile picture"
-          />
+          /> */}
 
           {/* Text Box below the Image */}
-          <div className="bg-slate-100 w-full h-1/3 p-3 rounded-b-lg flex items-center justify-center">
+          {/* <div className="bg-slate-100 w-full h-1/3 p-3 rounded-b-lg flex items-center justify-center">
             <div className="text-center">
               <h1 className="sm:hidden block text-2xl font-medium tracking-wide text-gray-800 md:text-4xl">
                 Norah <span className="text-[#F6AF3B]">Bird</span>
@@ -29,7 +29,7 @@ const hero = () => {
                 Sharing Places and food I enjoy every day.
               </h2>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>
